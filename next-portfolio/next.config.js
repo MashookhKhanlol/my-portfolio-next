@@ -4,7 +4,19 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['res.cloudinary.com', 'img.icons8.com', 'raw.githubusercontent.com', 'i.imgur.com', 'img.freepik.com', 'media.geeksforgeeks.org']
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    domains: [
+      'res.cloudinary.com',
+      'img.icons8.com',
+      'raw.githubusercontent.com',
+      'i.imgur.com',
+      'img.freepik.com',
+      'media.geeksforgeeks.org',
+      'skillicons.dev',
+      'cdn.simpleicons.org',
+      'images.unsplash.com',
+    ]
   }
 }
 

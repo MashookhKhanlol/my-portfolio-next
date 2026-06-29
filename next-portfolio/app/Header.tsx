@@ -27,8 +27,14 @@ export default function Header({ logo }: { logo: string }) {
         <header className={`backdrop-filter backdrop-blur-lg ${scroll ? 'border-b bg-white bg-opacity-40' : 'border-b-0'} dark:bg-grey-900 dark:bg-opacity-40 border-gray-200 dark:border-b-0 z-30 min-w-full flex flex-col fixed`}>
             <nav className='lg:w-11/12 2xl:w-4/5 w-full md:px-6 2xl:px-0 mx-auto py-4 hidden sm:flex items-center justify-between'>
 
-                <Link href={'/'} className='2xl:ml-6 hover:text-violet-700 hover:dark:text-violet-500 transition-colors duration-300'>
-                    {logo === 'Jigar Sable' ? <FaNodeJs size={28} /> : <span className='text-lg font-medium'>{logo.split(' ')[0]}</span>}
+                <Link href={'/'} className='2xl:ml-6'>
+                    <div className="flex items-center gap-1.5 group">
+                        <svg className="w-8 h-8 transition-transform group-hover:scale-110 duration-300" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="64" cy="64" r="62" className="fill-black dark:fill-white stroke-black dark:stroke-white" strokeWidth="2"/>
+                            <path d="M34 84V44L64 68L94 44V84" className="stroke-white dark:stroke-black" strokeWidth="11" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        <span className="text-xl font-bold tracking-tight text-black dark:text-white">ashookh</span>
+                    </div>
                 </Link>
 
                 <ul className='flex items-center gap-8'>
@@ -55,7 +61,15 @@ export default function Header({ logo }: { logo: string }) {
             </nav>
 
             <nav className='p-4 flex sm:hidden items-center justify-between'>
-                {logo === 'Jigar Sable' ? <FaNodeJs size={28} /> : <span className='text-lg font-medium'>{logo.split(' ')[0]}</span>}
+                <Link href={'/'}>
+                    <div className="flex items-center gap-1.5 group">
+                        <svg className="w-7 h-7" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="64" cy="64" r="62" className="fill-black dark:fill-white stroke-black dark:stroke-white" strokeWidth="2"/>
+                            <path d="M34 84V44L64 68L94 44V84" className="stroke-white dark:stroke-black" strokeWidth="11" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        <span className="text-lg font-bold tracking-tight text-black dark:text-white">ashookh</span>
+                    </div>
+                </Link>
                 <div className='flex items-center gap-4'>
                     <span
                         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}

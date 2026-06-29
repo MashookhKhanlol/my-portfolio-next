@@ -1,95 +1,157 @@
 {
   "main": {
-    "name": "Jhon Doe",
-    "shortDesc": "I focus on developing user-friendly web applications that meet the client's requirements, with attention to detail, scalability, and performance.",
+    "name": "Mashookh Khan",
+    "shortDesc": "Building scalable products with Next.js, AWS, DevOps & AI Automation. Full Stack Developer based in Hyderabad, India.",
     "titles": [
-      "Frontend Development",
-      "Backend Development",
-      "App Development"
+      "Full Stack Development",
+      "DevOps & Cloud (AWS)",
+      "AI Automation & Engineering",
+      "Scalable Systems Design"
     ],
-    "heroImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
+    "heroImage": "/mashookh.jpg",
     "techStackImages": [
-      "https://img.icons8.com/color/144/000000/material-ui.png",
-      "https://img.icons8.com/color/144/000000/html-5--v1.png",
-      "https://img.icons8.com/color/144/000000/redux.png",
-      "https://img.icons8.com/color/144/000000/chakra-ui.png"
+      "https://img.icons8.com/color/144/000000/nextjs.png",
+      "https://img.icons8.com/color/144/000000/amazon-web-services.png",
+      "https://img.icons8.com/color/144/000000/docker.png",
+      "https://img.icons8.com/color/144/000000/python--v1.png"
     ]
   },
   "about": {
-    "aboutImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
-    "aboutImageCaption": "< I build stuff 🚀/>",
-    "title": "Full Stack Developer",
-    "about": "I am a Full-Stack developer based in Pune, India. I'm an Information Technology undergraduate from SPPU, and my journey in web development began during my first year of college. I'm passionate about creating beautiful, functional, and user-friendly websites and applications, and I'm constantly pushing myself to learn and grow as a developer. Love building full-stack clones and side projects.",
+    "aboutImage": "/mashookh.jpg",
+    "aboutImageCaption": "< I build scalable systems 🚀/>",
+    "title": "Full Stack Developer & DevOps Engineer",
+    "about": "I'm Mashookh Khan, a Full Stack Developer based in Hyderabad, India. I'm a Computer Science graduate (B.Tech CSE — AI & ML Specialization) from KCC Institute of Technology and Management, Greater Noida. I'm passionate about building scalable systems, automation, DevOps pipelines, and AI-powered engineering solutions. I love architecting production-grade applications that combine modern frontends with robust cloud backends — from Next.js and FastAPI to AWS, Docker, and N8N automation workflows.",
     "callUrl": "",
     "resumeUrl": ""
   },
   "socials": [
     {
       "icon": "FaLinkedin",
-      "link": "https://www.linkedin.com/in/jhon-doe"
+      "link": "https://www.linkedin.com/in/mashookh-khan-5a8a1024b"
     },
     {
       "icon": "FaGithub",
-      "link": "https://github.com/jhon-doe"
+      "link": "https://github.com/MashookhKhanlol"
     },
     {
       "icon": "FaInstagram",
-      "link": "https://www.instagram.com/jhondoe"
+      "link": "https://www.instagram.com/mashookh_a_k"
     },
     {
       "icon": "FaTwitter",
-      "link": "https://twitter.com/jhondoe"
+      "link": "https://x.com/mashookh_a_k"
     }
   ],
   "skills": [
-    {
-      "name": "JavaScript",
-      "image": "https://img.icons8.com/color/144/null/javascript--v1.png",
-      "category": "Frontend"
-    },
-    {
-      "name": "Firebase",
-      "image": "https://img.icons8.com/color/144/null/firebase.png",
-      "category": "Backend"
-    },
-    {
-      "name": "GitHub",
-      "image": "https://img.icons8.com/material-outlined/96/null/github.png",
-      "category": "Tools"
-    }
+    { "name": "Git",          "image": "https://img.icons8.com/color/144/null/git.png",                               "category": "Languages"  },
+    { "name": "Java",         "image": "https://img.icons8.com/color/144/null/java-coffee-cup-logo--v1.png",          "category": "Languages"  },
+    { "name": "JavaScript",   "image": "https://img.icons8.com/color/144/null/javascript--v1.png",                    "category": "Languages"  },
+    { "name": "Python",       "image": "https://img.icons8.com/color/144/null/python--v1.png",                        "category": "Languages"  },
+    { "name": "TypeScript",   "image": "https://img.icons8.com/color/144/null/typescript.png",                        "category": "Languages"  },
+    { "name": "CSS3",         "image": "https://img.icons8.com/color/144/null/css3.png",                              "category": "Frontend"   },
+    { "name": "Tailwind CSS", "image": "https://img.icons8.com/color/144/null/tailwindcss.png",                       "category": "Frontend"   },
+    { "name": "Bootstrap",    "image": "https://img.icons8.com/color/144/null/bootstrap.png",                         "category": "Frontend"   },
+    { "name": "Material UI",  "image": "https://img.icons8.com/color/144/null/material-ui.png",                       "category": "Frontend"   },
+    { "name": "Vite",         "image": "https://skillicons.dev/icons?i=vite",                                         "category": "Frontend"   },
+    { "name": "React",        "image": "https://img.icons8.com/color/144/null/react-native.png",                      "category": "Frontend"   },
+    { "name": "Next.js",      "image": "https://img.icons8.com/color/144/null/nextjs.png",                            "category": "Frontend"   },
+    { "name": "Redux",        "image": "https://img.icons8.com/color/144/null/redux.png",                             "category": "Frontend"   },
+    { "name": "Node.js",      "image": "https://img.icons8.com/color/144/null/nodejs.png",                            "category": "Backend"    },
+    { "name": "Express.js",   "image": "https://img.icons8.com/color/144/null/express-js.png",                        "category": "Backend"    },
+    { "name": "FastAPI",      "image": "https://skillicons.dev/icons?i=fastapi",                                       "category": "Backend"    },
+    { "name": "Socket.io",    "image": "https://skillicons.dev/icons?i=socketio",                                      "category": "Backend"    },
+    { "name": "MongoDB",      "image": "https://img.icons8.com/color/144/null/mongodb.png",                           "category": "Database"   },
+    { "name": "Sequelize",    "image": "https://skillicons.dev/icons?i=sequelize",                                    "category": "Database"   },
+    { "name": "PostgreSQL",   "image": "https://img.icons8.com/color/144/null/postgreesql.png",                       "category": "Database"   },
+    { "name": "Prisma",       "image": "https://skillicons.dev/icons?i=prisma",                                       "category": "Database"   },
+    { "name": "Supabase",     "image": "https://skillicons.dev/icons?i=supabase",                                     "category": "Database"   },
+    { "name": "Figma",        "image": "https://img.icons8.com/color/144/null/figma--v1.png",                         "category": "Tools"      },
+    { "name": "Google Cloud", "image": "https://img.icons8.com/color/144/null/google-cloud.png",                      "category": "Tools"      },
+    { "name": "WordPress",    "image": "https://img.icons8.com/color/144/null/wordpress.png",                         "category": "Tools"      },
+    { "name": "Linux",        "image": "https://img.icons8.com/color/144/null/linux--v1.png",                         "category": "Tools"      },
+    { "name": "Ubuntu",       "image": "https://img.icons8.com/color/144/null/ubuntu--v1.png",                        "category": "Tools"      },
+    { "name": "AWS",          "image": "https://img.icons8.com/color/144/null/amazon-web-services.png",               "category": "Tools"      },
+    { "name": "Docker",       "image": "https://img.icons8.com/color/144/null/docker.png",                            "category": "Tools"      },
+    { "name": "Kubernetes",   "image": "https://img.icons8.com/color/144/null/kubernetes.png",                        "category": "Tools"      },
+    { "name": "VS Code",      "image": "https://img.icons8.com/color/144/null/visual-studio-code-2019.png",           "category": "Tools"      }
   ],
   "projects": [
     {
-      "name": "Project Title",
-      "techstack": "HTML5, CSS3, JavaScript, jQuery",
+      "name": "Meal Dash - Food Delivery Web App",
+      "techstack": "React.js, TypeScript, Node.js, Express.js, MongoDB, Stripe, Auth0, ShadCN UI, Tailwind CSS",
       "category": "MERN Stack",
-      "image": "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210114225740/10-Best-Web-Development-Project-Ideas-For-Beginners-in-2021.png",
+      "duration": "Sept 2024 - Dec 2024",
+      "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80",
+      "desc": "FoodDash is a dynamic food delivery platform offering dedicated interfaces for customers and restaurant owners. Built with React.js, TypeScript, ShadCN UI, and Tailwind CSS, it delivers a seamless user experience with a modern and responsive design. The backend, powered by Node.js and MongoDB, enables efficient data handling and real-time order management. Secure payments are facilitated through Stripe, while user authentication is managed via Auth0, ensuring robust security.",
       "links": {
-        "code": "",
+        "code": "https://github.com/MashookhKhanlol/Food-Delivery-App",
         "video": "",
-        "visit": ""
+        "visit": "https://meal-dash-frontend.onrender.com/"
       }
     },
     {
-      "name": "Project Title",
-      "techstack": "Flutter, Dart, Firebase",
-      "category": "Flutter",
-      "image": "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210114225740/10-Best-Web-Development-Project-Ideas-For-Beginners-in-2021.png",
+      "name": "Nomisma - Personal Finance & Budget Tracker",
+      "techstack": "Next.js, TypeScript, React.js, Tailwind CSS, Supabase, Clerk, Gemini AI, Resend, React Email, Inngest",
+      "category": "Full Stack",
+      "duration": "Jan 2025 - April 2025",
+      "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+      "desc": "Nomisma is an intelligent personal finance tracker designed to help users manage their budgets, expenses, and financial goals effortlessly. Built with Next.js, TypeScript, ShadCN UI, and Tailwind CSS, it delivers a clean, responsive, and user-friendly interface. Supabase powers the backend with secure real-time data storage and instant sync across devices. AI features via Gemini AI enable receipt scanning and automatic transaction categorization with over 95% accuracy. Budget reports and notifications are delivered via Resend and React Email, while background tasks are managed through Inngest.",
       "links": {
-        "code": "",
+        "code": "https://github.com/MashookhKhanlol/Nomisma",
         "video": "",
-        "visit": ""
+        "visit": "https://nomisma-five.vercel.app/"
       }
     },
     {
-      "name": "Project Title",
-      "techstack": "PHP, MySQL, HTML5, CSS3, Bootstrap, JavaScript",
-      "category": "LAMP Stack",
-      "image": "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210114225740/10-Best-Web-Development-Project-Ideas-For-Beginners-in-2021.png",
+      "name": "Tune Tutor - Music Course Website",
+      "techstack": "Next.js, TypeScript, Node.js, Tailwind CSS, Aceternity UI",
+      "category": "Full Stack",
+      "duration": "Jan 2024 - Feb 2024",
+      "image": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&q=80",
+      "desc": "Crafted a modern and interactive music course website using Next.js, providing users with a seamless learning experience. Built with TypeScript, Tailwind CSS, and Aceternity UI to deliver stunning animations and a visually rich interface. The platform showcases music courses, instructors, and learning paths in an engaging and accessible format.",
+      "links": {
+        "code": "https://github.com/MashookhKhanlol/Music_App_Nextjs",
+        "video": "",
+        "visit": "https://music-app-nextjs-nu.vercel.app/"
+      }
+    },
+    {
+      "name": "Vespera Blog",
+      "techstack": "React.js, Node.js, Appwrite, Tailwind CSS, TinyMCE",
+      "category": "Full Stack",
+      "duration": "Dec 2023",
+      "image": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80",
+      "desc": "Developed a React app allowing users to add, delete, and view blog posts, enhancing user engagement and content management. Built with Appwrite as the backend-as-a-service for authentication and database, TinyMCE for rich text editing, and Tailwind CSS for a clean, responsive UI.",
       "links": {
         "code": "",
         "video": "",
-        "visit": ""
+        "visit": "https://vespera-blog--chi.vercel.app/"
+      }
+    },
+    {
+      "name": "Currency Convertor",
+      "techstack": "React.js, Node.js, Tailwind CSS",
+      "category": "Frontend",
+      "duration": "Jun 2023",
+      "image": "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=800&q=80",
+      "desc": "Developed a real-time Currency Convertor web application using React.js and Tailwind CSS. The application integrates with a live exchange rate API to provide instant, accurate currency conversions between multiple global currencies, featuring an intuitive and responsive user interface.",
+      "links": {
+        "code": "https://github.com/MashookhKhanlol/currency-convertor",
+        "video": "",
+        "visit": "https://currency-convertor-rosy-psi.vercel.app/"
+      }
+    },
+    {
+      "name": "Todo App",
+      "techstack": "React.js, Node.js, Tailwind CSS",
+      "category": "Frontend",
+      "duration": "July 2023",
+      "image": "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?w=800&q=80",
+      "desc": "The ToDo App is a task management application that allows users to add, delete, and update their to-do items efficiently. This app is designed to help users stay organized and manage their tasks with ease.",
+      "links": {
+        "code": "https://github.com/MashookhKhanlol/todo-app",
+        "video": "",
+        "visit": "https://todo-app-omega-ten-70.vercel.app/"
       }
     }
   ],
