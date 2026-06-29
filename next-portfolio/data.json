@@ -1,0 +1,125 @@
+{
+  "main": {
+    "name": "Jhon Doe",
+    "shortDesc": "I focus on developing user-friendly web applications that meet the client's requirements, with attention to detail, scalability, and performance.",
+    "titles": [
+      "Frontend Development",
+      "Backend Development",
+      "App Development"
+    ],
+    "heroImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
+    "techStackImages": [
+      "https://img.icons8.com/color/144/000000/material-ui.png",
+      "https://img.icons8.com/color/144/000000/html-5--v1.png",
+      "https://img.icons8.com/color/144/000000/redux.png",
+      "https://img.icons8.com/color/144/000000/chakra-ui.png"
+    ]
+  },
+  "about": {
+    "aboutImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
+    "aboutImageCaption": "< I build stuff 🚀/>",
+    "title": "Full Stack Developer",
+    "about": "I am a Full-Stack developer based in Pune, India. I'm an Information Technology undergraduate from SPPU, and my journey in web development began during my first year of college. I'm passionate about creating beautiful, functional, and user-friendly websites and applications, and I'm constantly pushing myself to learn and grow as a developer. Love building full-stack clones and side projects.",
+    "callUrl": "",
+    "resumeUrl": ""
+  },
+  "socials": [
+    {
+      "icon": "FaLinkedin",
+      "link": "https://www.linkedin.com/in/jhon-doe"
+    },
+    {
+      "icon": "FaGithub",
+      "link": "https://github.com/jhon-doe"
+    },
+    {
+      "icon": "FaInstagram",
+      "link": "https://www.instagram.com/jhondoe"
+    },
+    {
+      "icon": "FaTwitter",
+      "link": "https://twitter.com/jhondoe"
+    }
+  ],
+  "skills": [
+    {
+      "name": "JavaScript",
+      "image": "https://img.icons8.com/color/144/null/javascript--v1.png",
+      "category": "Frontend"
+    },
+    {
+      "name": "Firebase",
+      "image": "https://img.icons8.com/color/144/null/firebase.png",
+      "category": "Backend"
+    },
+    {
+      "name": "GitHub",
+      "image": "https://img.icons8.com/material-outlined/96/null/github.png",
+      "category": "Tools"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Project Title",
+      "techstack": "HTML5, CSS3, JavaScript, jQuery",
+      "category": "MERN Stack",
+      "image": "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210114225740/10-Best-Web-Development-Project-Ideas-For-Beginners-in-2021.png",
+      "links": {
+        "code": "",
+        "video": "",
+        "visit": ""
+      }
+    },
+    {
+      "name": "Project Title",
+      "techstack": "Flutter, Dart, Firebase",
+      "category": "Flutter",
+      "image": "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210114225740/10-Best-Web-Development-Project-Ideas-For-Beginners-in-2021.png",
+      "links": {
+        "code": "",
+        "video": "",
+        "visit": ""
+      }
+    },
+    {
+      "name": "Project Title",
+      "techstack": "PHP, MySQL, HTML5, CSS3, Bootstrap, JavaScript",
+      "category": "LAMP Stack",
+      "image": "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210114225740/10-Best-Web-Development-Project-Ideas-For-Beginners-in-2021.png",
+      "links": {
+        "code": "",
+        "video": "",
+        "visit": ""
+      }
+    }
+  ],
+  "educations": [
+    {
+      "institute": "Nirmal Higher Secondary School | CBSE",
+      "degree": "Higher Secondary School",
+      "duration": "2019 - 2020"
+    },
+    {
+      "institute": "KCC Institute of Technology and Management, Greater Noida, Uttar Pradesh",
+      "degree": "B.Tech CSE | AI and ML Specialization",
+      "duration": "June 2021 - June 2025",
+      "desc": [
+        "Pursuing Bachelor of Technology in Computer Science and Engineering with AI and ML Specialization.",
+        "Gained hands-on experience in Artificial Intelligence, Machine Learning, Deep Learning, and Data Science.",
+        "Worked on full-stack web development projects using modern technologies including React, Node.js, and databases."
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "company": "Young Thames LLP",
+      "position": "EA - Web Development | Hybrid",
+      "duration": "July 2025 - May 2026",
+      "desc": [
+        "Developed and maintained backend services using Python and FastAPI with MySQL databases, designing REST APIs for HR and CRM platform workflows covering interview scheduling, meeting logging, and lead capture pipelines.",
+        "Built production Next.js 14 frontend applications integrated with WhatsApp Business API, calling and SMS APIs, and SMTP for lead capture into Google Sheets, with multi-domain routing via Caddy reverse proxy, CI/CD pipelines, and scheduled encrypted mail backups.",
+        "Managed containerized microservices on AWS (Lambda, S3, DynamoDB, API Gateway, Route 53) using Docker and Nginx, with Grafana and Prometheus health dashboards, N8N automation workflows, Cloudflare firewall rules, and function-level optimizations for cold-start latency and uptime."
+      ]
+    }
+  ]
+}
