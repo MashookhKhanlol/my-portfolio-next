@@ -1,0 +1,36 @@
+# ── Version control ──────────────────────────────────────────────────────────
+.git
+.gitignore
+
+# ── Local dev / IDE ──────────────────────────────────────────────────────────
+.vscode
+.idea
+*.log
+*.swp
+*.swo
+
+# ── Next.js build output (rebuilt inside Docker) ─────────────────────────────
+.next
+out
+
+# ── Dependencies (reinstalled inside Docker) ─────────────────────────────────
+node_modules
+
+# ── Environment files (secrets should come from docker-compose env_file/args) ─
+.env
+.env.local
+.env.*.local
+
+# ── Docker files themselves ───────────────────────────────────────────────────
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# ── OS artifacts ─────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── CI / misc ────────────────────────────────────────────────────────────────
+coverage
+*.test.*
+__tests__

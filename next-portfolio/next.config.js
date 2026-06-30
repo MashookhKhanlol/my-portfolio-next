@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Required for Docker: emits a standalone server bundle (node server.js)
+  output: 'standalone',
   experimental: {
     appDir: true,
   },

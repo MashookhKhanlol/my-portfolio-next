@@ -1,135 +1,339 @@
-![Portfolio](https://res.cloudinary.com/lifecodes/image/upload/v1678684352/Portfolio/l7b1gz61rh3hgoz5qzta.png)
-
 <div align="center">
-  &middot;
-  <i>Next Portfolio built in Next.js + TypeScript + Tailwind CSS + Firebase</i>
-  &middot;
-  <br/>
-  <br/>
 
-  <p align="center">
-    <img src="https://img.shields.io/github/forks/jigar-sable/next-portfolio?style=for-the-badge" />
-  <a href="https://jigarsable.vercel.app">
-    <img src="https://img.shields.io/static/v1?label=&message=View%20Demo&style=for-the-badge&color=black&logo=vercel" />
-  </a>
-</p>
+# 🚀 Mashookh Khan — Developer Portfolio
 
-<p align="center">
-  <a href="#introduction-">Introduction</a> •
-  <a href="#tech-stack-%EF%B8%8F">Tech Stack</a> •
-  <a href="#development-">Development</a> •
-    <a href="#deployment-">Deployment</a> •
-  <a href="#license-">License</a>
-</p>
+**Full Stack Developer & DevOps Engineer** based in Hyderabad, India
+
+[![Next.js](https://img.shields.io/badge/Next.js-13-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.9-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.2-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker)](https://www.docker.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-violet?style=for-the-badge)](LICENSE.md)
+
+A modern, fully responsive, dark/light mode portfolio website built with Next.js 13 App Router. Content is data-driven via a single `data.json` file — no code changes needed to update your portfolio.
+
+[Live Demo](https://jigarsable.vercel.app) · [Report a Bug](https://github.com/MashookhKhanlol/my-portfolio-next/issues) · [LinkedIn](https://www.linkedin.com/in/mashookh-khan-5a8a1024b)
 
 </div>
 
-## Introduction 👋
+---
 
-Next Portfolio is built using Next.js and Tailwind CSS for a modern design and rapid development. TypeScript is utilized for code clarity and safety. Additionally, Firebase is being integrated for backend services such as realtime-database. The result is a dynamic and functional portfolio website that showcases the developer's skills and experience.
+## 📋 Table of Contents
 
-## Tech Stack 🛠️
+- [✨ Features](#-features)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [📁 Project Structure](#-project-structure)
+- [⚡ Quick Start](#-quick-start)
+- [🔧 Configuration](#-configuration)
+- [🐳 Docker](#-docker)
+- [☁️ Deployment](#️-deployment)
+- [🎨 Customization](#-customization)
+- [📄 License](#-license)
 
-- [Next.js](https://nextjs.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Firebase](https://firebase.google.com)
-- [SendGrid](https://sendgrid.com)
-- [Framer Motion](https://www.framer.com/motion)
+---
 
-<!-- ## Tech Stack 🛠️
+## ✨ Features
 
- <p>
- <a href="https://nextjs.org">
-    <img src="https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=nextdotjs&logoColor=white" />
-    </a>
-  <a href="https://tailwindcss.com">
-    <img src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white" />
-  </a>
-  <a href="https://www.typescriptlang.org">
-    <img src="https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white" />
-  </a>
-   <a href="https://firebase.google.com">
-    <img src="https://img.shields.io/badge/Firebase-FFCA28.svg?style=for-the-badge&logo=Firebase&logoColor=black" />
-  </a>
-  <a href="https://www.framer.com/motion">
-    <img src="https://img.shields.io/badge/Framer-0055FF.svg?style=for-the-badge&logo=Framer&logoColor=white" />
-  </a>
-</p> -->
+- 🌗 **Dark / Light Mode** — Smooth theme toggle powered by `next-themes`
+- ✍️ **Typewriter Animations** — Dynamic role cycling in the hero section
+- 📨 **Working Contact Form** — Sends real emails via Gmail SMTP (Nodemailer)
+- 📊 **Data-Driven Content** — All sections (hero, about, skills, projects, experience) powered by `data.json`
+- 🔗 **Remote Data Support** — Optionally fetch `data.json` from a GitHub raw URL
+- 🎞️ **Smooth Animations** — Page transitions and scroll reveals via Framer Motion
+- 📱 **Fully Responsive** — Mobile-first layout with Tailwind CSS
+- 🔍 **SEO Optimised** — Open Graph tags, Twitter Card, canonical URLs, structured headings
+- 🐳 **Docker Ready** — Production-grade multi-stage Docker build included
+- ⚡ **Vercel Ready** — Zero-config deployment to Vercel
 
-## Development 💻
+---
 
-Here are the steps to run the portfolio locally.
+## 🛠️ Tech Stack
 
-1. Fork [this](https://github.com/jigar-sable/next-portfolio) repository.
+| Layer | Technology |
+|---|---|
+| **Framework** | Next.js 13 (App Router) |
+| **Language** | TypeScript 4.9 |
+| **Styling** | Tailwind CSS 3 |
+| **Animations** | Framer Motion 9 |
+| **Icons** | React Icons |
+| **Typewriter** | typewriter-effect |
+| **Email** | Nodemailer + Gmail SMTP |
+| **Database** | Firebase Realtime Database |
+| **Analytics** | Vercel Analytics |
+| **Scroll** | react-scroll |
+| **Notifications** | react-toastify |
+| **Containerization** | Docker + Docker Compose |
 
-2. Clone your forked copy of the repo
+---
 
-   ```bash
-   git clone https://github.com/<your-github-username>/next-portfolio.git
-   ```
+## 📁 Project Structure
 
-3. Install dependencies
+```
+next-portfolio/
+├── app/                        # Next.js 13 App Router
+│   ├── page.tsx                # Root page — fetches data, renders HomePage
+│   ├── HomePage.tsx            # Shell that composes all sections
+│   ├── Header.tsx              # Sticky nav with theme toggle
+│   ├── Footer.tsx              # Footer with social links
+│   ├── head.tsx                # SEO meta tags (OG, Twitter, canonical)
+│   ├── layout.tsx              # Root layout
+│   └── globals.css             # Global styles
+│
+├── components/                 # UI components
+│   ├── Hero.tsx                # Hero section with typewriter & avatar
+│   ├── About.tsx               # About me section
+│   ├── Contact.tsx             # Contact form (posts to /api/mail)
+│   ├── Socials.tsx             # Social links bar
+│   ├── CallToAction.tsx        # CTA button
+│   ├── SectionWrapper.tsx      # Reusable animated section wrapper
+│   ├── skills/                 # Skills section components
+│   ├── projects/               # Projects grid components
+│   └── experiences/            # Experience & Education timeline
+│
+├── pages/api/
+│   └── mail.ts                 # API route — sends email via Nodemailer
+│
+├── types/                      # TypeScript type definitions
+├── public/                     # Static assets (images, favicon)
+├── data.json                   # ⭐ All portfolio content lives here
+├── firebase.ts                 # Firebase Realtime DB initialisation
+├── next.config.js              # Next.js config (standalone output, image domains)
+├── tailwind.config.js          # Tailwind theme config
+├── Dockerfile                  # Multi-stage Docker build
+├── docker-compose.yml          # Docker Compose for local/prod
+├── .dockerignore               # Docker build context exclusions
+├── .env.local                  # Local environment variables (git-ignored)
+└── .env.local.example          # Template for required env vars
+```
 
-   ```bash
-   npm i
-   ```
+---
 
-4. Create a Firebase project and select the web app
+## ⚡ Quick Start
 
-5. Create an `.env.local` file in the root directory, and add the following variables with your firebase config:
-   ```
-   SENDGRID_API_KEY=XXXXXXXX
-   NEXT_PUBLIC_FIREBASE_DATABASE_URL=XXXXXXXXXX
-   MAIL_FROM=YOUR_MAIL_ID
-   MAIL_TO=YOUR_MAIL_ID
-   ```
-   <!-- write text to tell user to get sendgrid keys from dashboard and add here -->
+### Prerequisites
 
-> **Note**: `SENDGRID_API_KEY` - Create an API key from "Settings" -> "API Keys" with "Restricted Access" to only "Mail Send"
+- **Node.js** ≥ 18
+- **npm** ≥ 9
+- **Docker** (optional, for containerised setup)
 
-1. Update the sample [data.json](https://github.com/jigar-sable/next-portfolio/blob/main/data.json) provided, with your data or directly import the same and edit using firebase later. (For storing images you can use [Cloudinary](https://cloudinary.com) or [Firebase Storage](https://firebase.google.com/docs/storage))
+### 1. Clone the repository
 
-2. Import json data
+```bash
+git clone https://github.com/MashookhKhanlol/my-portfolio-next.git
+cd my-portfolio-next
+```
 
-   - Go to [Firebase Console](https://console.firebase.google.com) and select your project
-   - Go to "Database" -> "Realtime Database" -> "Import JSON" and import the [data.json](https://github.com/jigar-sable/next-portfolio/blob/main/data.json) file
+### 2. Install dependencies
 
-3. Run the project
+```bash
+npm install --legacy-peer-deps
+```
 
-   ```bash
-   npm run dev
-   ```
+### 3. Set up environment variables
 
-## Deployment 🚀
+```bash
+cp .env.local.example .env.local
+```
 
-1. Create a Vercel account and select "Import Project"
+Open `.env.local` and fill in your values (see [Configuration](#-configuration)).
 
-2. Select the forked repository and deploy
+### 4. Run the development server
 
-3. Add the following environment variables in the Vercel dashboard:
-   ```
-   SENDGRID_API_KEY=XXXXXXXX
-   NEXT_PUBLIC_FIREBASE_DATABASE_URL=XXXXXXXXXX
-   MAIL_FROM=YOUR_MAIL_ID
-   MAIL_TO=YOUR_MAIL_ID
-   ```
-4. Hurray! You successfully deployed the portfolio🥳
+```bash
+npm run dev
+```
 
-## License 📄
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/jigar-sable/next-portfolio/blob/main/LICENSE.md)
+---
 
-<!-- ## Contact 📬
+## 🔧 Configuration
 
-If you want to contact me, you can reach me through below handles.
+All environment variables are documented in [`.env.local.example`](.env.local.example).
 
-[![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jigar-sable)
+### Required Variables
 
-## Support 🙌
+| Variable | Description |
+|---|---|
+| `GMAIL_USER` | Gmail address used to **send** contact form emails |
+| `GMAIL_APP_PASSWORD` | 16-character [App Password](https://myaccount.google.com/apppasswords) (not your Gmail password) |
 
-If you like this portfolio, please consider giving it a ⭐ on GitHub and sharing it with your friends via social media.
+### Optional Variables
+
+| Variable | Description | Default |
+|---|---|---|
+| `NEXT_PUBLIC_DATA_URL` | GitHub raw URL to fetch `data.json` remotely | Falls back to local `data.json` |
+| `NEXT_PUBLIC_FIREBASE_*` | Firebase Realtime Database credentials | — |
+
+### Setting up Gmail App Password
+
+1. Go to your **Google Account → Security**
+2. Enable **2-Step Verification** (required)
+3. Search for **App Passwords**
+4. Create a new App Password for "Mail"
+5. Copy the 16-character code into `GMAIL_APP_PASSWORD`
+
+> **⚠️ Security note:** Never commit `.env.local` to version control. It is already listed in `.gitignore`.
+
+---
+
+## 🐳 Docker
+
+The project includes a **production-grade multi-stage Dockerfile** for containerised deployment.
+
+### Architecture
+
+```
+Stage 1 — deps     : npm ci (clean dependency install)
+Stage 2 — builder  : next build (compiles the app)
+Stage 3 — runner   : lean Alpine image, non-root user, node server.js
+```
+
+### Build & Run with Docker Compose
+
+```bash
+# Build the image and start the container
+docker compose up --build
+
+# Run in detached (background) mode
+docker compose up -d --build
+
+# Stop the container
+docker compose down
+
+# View logs
+docker compose logs -f portfolio
+```
+
+The app will be available at **http://localhost:3000**.
+
+### Environment Variables for Docker
+
+Docker Compose reads your `.env.local` file automatically via `env_file`. For production environments, pass secrets via your CI/CD system instead:
+
+```bash
+docker compose up --build \
+  -e GMAIL_USER=you@gmail.com \
+  -e GMAIL_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx
+```
+
+> **Note:** `NEXT_PUBLIC_*` variables are baked into the JavaScript bundle **at build time** as Docker `ARG`s. They must be set before building the image.
+
+### Build the image standalone
+
+```bash
+docker build \
+  --build-arg NEXT_PUBLIC_DATA_URL=https://raw.githubusercontent.com/... \
+  -t next-portfolio:latest .
+```
+
+---
+
+## ☁️ Deployment
+
+### Vercel (Recommended)
+
+1. Push your repository to GitHub
+2. Import the project at [vercel.com/new](https://vercel.com/new)
+3. Add environment variables in the Vercel dashboard:
+   - `GMAIL_USER`
+   - `GMAIL_APP_PASSWORD`
+   - `NEXT_PUBLIC_DATA_URL` *(optional)*
+   - Firebase vars *(optional)*
+4. Deploy — Vercel auto-detects Next.js
+
+### Other Platforms (Railway, Render, AWS EC2, etc.)
+
+Use the Docker image:
+
+```bash
+# Build
+docker build -t next-portfolio .
+
+# Run
+docker run -p 3000:3000 \
+  -e GMAIL_USER=you@gmail.com \
+  -e GMAIL_APP_PASSWORD=your-app-password \
+  next-portfolio
+```
+
+---
+
+## 🎨 Customization
+
+All portfolio content is stored in a single file: **[`data.json`](data.json)**
+
+You can edit it directly, or host it on GitHub and point `NEXT_PUBLIC_DATA_URL` to the raw URL so your live site updates without redeployment.
+
+### Sections in `data.json`
+
+| Key | What it controls |
+|---|---|
+| `main` | Name, short bio, typewriter titles, avatar, tech stack icons |
+| `about` | About section image, bio text, resume URL, call URL |
+| `socials` | Social media links (LinkedIn, GitHub, Instagram, Twitter) |
+| `skills` | Skill cards with name, image, and category |
+| `projects` | Project cards with name, stack, description, and links |
+| `experiences` | Work experience timeline |
+| `educations` | Education timeline |
+
+### Adding a New Skill
+
+```json
+{
+  "name": "Rust",
+  "image": "https://img.icons8.com/color/144/null/rust-programming-language.png",
+  "category": "Languages"
+}
+```
+
+### Adding a New Project
+
+```json
+{
+  "name": "My New Project",
+  "techstack": "Next.js, TypeScript, PostgreSQL",
+  "category": "Full Stack",
+  "duration": "Jan 2026 - Mar 2026",
+  "image": "https://images.unsplash.com/photo-xxx",
+  "desc": "Project description goes here.",
+  "links": {
+    "code": "https://github.com/you/repo",
+    "video": "",
+    "visit": "https://your-project.vercel.app"
+  }
+}
+```
+
+### Theme & Colors
+
+Colors and fonts are configured in [`tailwind.config.js`](tailwind.config.js). The primary accent color is **violet (`#7c3aed`)**.
+
+---
+
+## 📜 Available Scripts
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Start local development server on port 3000 |
+| `npm run build` | Build the production bundle |
+| `npm run start` | Start the production server |
+| `npm run lint` | Run ESLint |
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE.md](LICENSE.md) file for details.
+
+---
 
 <div align="center">
-  <h3> Show some &nbsp;❤️&nbsp; by starring this repo! </h3>
-</div> -->
+
+Made with ❤️ by **Mashookh Khan**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mashookh-khan-5a8a1024b)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/MashookhKhanlol)
+[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=flat-square&logo=twitter&logoColor=white)](https://x.com/mashookh_a_k)
+
+</div>
