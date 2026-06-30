@@ -13,13 +13,14 @@ on:
 
 # ─────────────────────────────────────────────────────────────
 # Required Repo Secrets (Settings → Secrets → Actions):
-#   HOST_IP         → VPS IP address        e.g. 203.0.113.10
-#   HOST_NAME       → VPS hostname/domain   e.g. myserver.com
-#   SSH_USER        → SSH login user        e.g. ubuntu / deploy
+#   HOST_IP         → VPS IP address         e.g. 203.0.113.10
+#   HOST_NAME       → VPS hostname/domain    e.g. myserver.com
+#   SSH_USER        → SSH login user         e.g. ubuntu / deploy
 #   SSH_PRIVATE_KEY → contents of ~/.ssh/id_ed25519 (private key)
 #
-# NOTE: .env.local lives on the VPS — never put it in GitHub secrets.
-#       docker-compose.yml picks it up automatically via env_file.
+# NOTE: .env.local (GMAIL_USER, GMAIL_APP_PASSWORD) lives on the VPS.
+#       Never put it in GitHub secrets. docker-compose picks it up via env_file.
+#       Firebase has been removed — no Firebase secrets needed.
 # ─────────────────────────────────────────────────────────────
 
 jobs:
