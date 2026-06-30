@@ -17,10 +17,10 @@ A modern, fully responsive, dark/light mode portfolio website built with Next.js
 ---
 
 ### 🌞 Light Mode
-![Portfolio Light Mode](public/portfolio-fork.png)
+![Portfolio Light Mode](next-portfolio/public/portfolio-fork.png)
 
 ### 🌙 Dark Mode
-![Portfolio Dark Mode](public/portfolio-dark-fork.png)
+![Portfolio Dark Mode](next-portfolio/public/portfolio-dark-fork.png)
 
 </div>
 
@@ -331,6 +331,7 @@ Colors and fonts are configured in [`tailwind.config.js`](tailwind.config.js). T
 ---
 
 
+---
 
 <div align="center">
 
