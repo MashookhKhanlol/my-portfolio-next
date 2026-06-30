@@ -20,7 +20,7 @@ A modern, fully responsive, dark/light mode portfolio website built with Next.js
 ![Portfolio Light Mode](public/portfolio-fork.png)
 
 ### 🌙 Dark Mode
-![Portfolio Dark Mode](public/portfolio-fork-dark.png)
+![Portfolio Dark Mode](public/portfolio-dark-fork.png)
 
 </div>
 
