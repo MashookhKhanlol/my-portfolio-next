@@ -330,9 +330,6 @@ Colors and fonts are configured in [`tailwind.config.js`](tailwind.config.js). T
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License** — see the [LICENSE.md](LICENSE.md) file for details.
 
 ---
 
