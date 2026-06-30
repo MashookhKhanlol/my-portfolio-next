@@ -162,9 +162,9 @@
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
       "desc": "A modern, fully responsive personal portfolio website built with Next.js 13 App Router and TypeScript. Features include dark/light mode toggle, typewriter animations, a working contact form powered by Nodemailer and Gmail SMTP, and a data-driven architecture where all content is managed through a single data.json file. Containerized with a production-grade multi-stage Docker build for easy deployment anywhere.",
       "links": {
-        "code": "https://github.com/MashookhKhanlol/my-portfolio-next",
+        "code": "https://github.com/MashookhKhanlol/my-portfolio-next/tree/master/next-portfolio",
         "video": "",
-        "visit": "https://jigarsable.vercel.app"
+        "visit": "https://portfolio.flowcrafted.me/"
       }
     }
   ],
