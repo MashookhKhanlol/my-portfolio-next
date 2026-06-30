@@ -14,6 +14,14 @@ A modern, fully responsive, dark/light mode portfolio website built with Next.js
 
 [Live Demo](https://jigarsable.vercel.app) · [Report a Bug](https://github.com/MashookhKhanlol/my-portfolio-next/issues) · [LinkedIn](https://www.linkedin.com/in/mashookh-khan-5a8a1024b)
 
+---
+
+### 🌞 Light Mode
+![Portfolio Light Mode](public/portfolio-fork.png)
+
+### 🌙 Dark Mode
+![Portfolio Dark Mode](public/portfolio-fork-dark.png)
+
 </div>
 
 ---
