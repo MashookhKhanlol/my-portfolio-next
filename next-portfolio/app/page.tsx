@@ -1,13 +1,18 @@
+import { readFileSync } from 'fs'
+import { join } from 'path'
 import { FaNodeJs } from "react-icons/fa"
 import HomePage from "./HomePage"
+
 
 async function getData() {
   const DATA_URL = process.env.NEXT_PUBLIC_DATA_URL
 
-  // Fallback to local data.json for development (when env var is not set)
+  // Fallback to local data.json — use fs.readFileSync so changes are
+  // picked up immediately in dev without restarting the server.
   if (!DATA_URL) {
-    const localData = await import('@/data.json')
-    return localData.default
+    const filePath = join(process.cwd(), 'data.json')
+    const raw = readFileSync(filePath, 'utf-8')
+    return JSON.parse(raw)
   }
 
   const res = await fetch(DATA_URL, { cache: 'no-store' })

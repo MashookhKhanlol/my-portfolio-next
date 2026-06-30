@@ -77,55 +77,16 @@
   ],
   "projects": [
     {
-      "name": "Meal Dash - Food Delivery Web App",
-      "techstack": "React.js, TypeScript, Node.js, Express.js, MongoDB, Stripe, Auth0, ShadCN UI, Tailwind CSS",
-      "category": "MERN Stack",
-      "duration": "Sept 2024 - Dec 2024",
-      "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80",
-      "desc": "FoodDash is a dynamic food delivery platform offering dedicated interfaces for customers and restaurant owners. Built with React.js, TypeScript, ShadCN UI, and Tailwind CSS, it delivers a seamless user experience with a modern and responsive design. The backend, powered by Node.js and MongoDB, enables efficient data handling and real-time order management. Secure payments are facilitated through Stripe, while user authentication is managed via Auth0, ensuring robust security.",
+      "name": "Todo App",
+      "techstack": "React.js, Node.js, Tailwind CSS",
+      "category": "Frontend",
+      "duration": "July 2023",
+      "image": "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?w=800&q=80",
+      "desc": "The ToDo App is a task management application that allows users to add, delete, and update their to-do items efficiently. This app is designed to help users stay organized and manage their tasks with ease.",
       "links": {
-        "code": "https://github.com/MashookhKhanlol/Food-Delivery-App",
+        "code": "https://github.com/MashookhKhanlol/todo-app",
         "video": "",
-        "visit": "https://meal-dash-frontend.onrender.com/"
-      }
-    },
-    {
-      "name": "Nomisma - Personal Finance & Budget Tracker",
-      "techstack": "Next.js, TypeScript, React.js, Tailwind CSS, Supabase, Clerk, Gemini AI, Resend, React Email, Inngest",
-      "category": "Full Stack",
-      "duration": "Jan 2025 - April 2025",
-      "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
-      "desc": "Nomisma is an intelligent personal finance tracker designed to help users manage their budgets, expenses, and financial goals effortlessly. Built with Next.js, TypeScript, ShadCN UI, and Tailwind CSS, it delivers a clean, responsive, and user-friendly interface. Supabase powers the backend with secure real-time data storage and instant sync across devices. AI features via Gemini AI enable receipt scanning and automatic transaction categorization with over 95% accuracy. Budget reports and notifications are delivered via Resend and React Email, while background tasks are managed through Inngest.",
-      "links": {
-        "code": "https://github.com/MashookhKhanlol/Nomisma",
-        "video": "",
-        "visit": "https://nomisma-five.vercel.app/"
-      }
-    },
-    {
-      "name": "Tune Tutor - Music Course Website",
-      "techstack": "Next.js, TypeScript, Node.js, Tailwind CSS, Aceternity UI",
-      "category": "Full Stack",
-      "duration": "Jan 2024 - Feb 2024",
-      "image": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&q=80",
-      "desc": "Crafted a modern and interactive music course website using Next.js, providing users with a seamless learning experience. Built with TypeScript, Tailwind CSS, and Aceternity UI to deliver stunning animations and a visually rich interface. The platform showcases music courses, instructors, and learning paths in an engaging and accessible format.",
-      "links": {
-        "code": "https://github.com/MashookhKhanlol/Music_App_Nextjs",
-        "video": "",
-        "visit": "https://music-app-nextjs-nu.vercel.app/"
-      }
-    },
-    {
-      "name": "Vespera Blog",
-      "techstack": "React.js, Node.js, Appwrite, Tailwind CSS, TinyMCE",
-      "category": "Full Stack",
-      "duration": "Dec 2023",
-      "image": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80",
-      "desc": "Developed a React app allowing users to add, delete, and view blog posts, enhancing user engagement and content management. Built with Appwrite as the backend-as-a-service for authentication and database, TinyMCE for rich text editing, and Tailwind CSS for a clean, responsive UI.",
-      "links": {
-        "code": "",
-        "video": "",
-        "visit": "https://vespera-blog--chi.vercel.app/"
+        "visit": "https://todo-app-omega-ten-70.vercel.app/"
       }
     },
     {
@@ -142,19 +103,72 @@
       }
     },
     {
-      "name": "Todo App",
-      "techstack": "React.js, Node.js, Tailwind CSS",
-      "category": "Frontend",
-      "duration": "July 2023",
-      "image": "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?w=800&q=80",
-      "desc": "The ToDo App is a task management application that allows users to add, delete, and update their to-do items efficiently. This app is designed to help users stay organized and manage their tasks with ease.",
+      "name": "Meal Dash - Food Delivery Web App",
+      "techstack": "React.js, TypeScript, Node.js, Express.js, MongoDB, Stripe, Auth0, ShadCN UI, Tailwind CSS",
+      "category": "MERN Stack",
+      "duration": "Sept 2024 - Dec 2024",
+      "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80",
+      "desc": "FoodDash is a dynamic food delivery platform offering dedicated interfaces for customers and restaurant owners. Built with React.js, TypeScript, ShadCN UI, and Tailwind CSS, it delivers a seamless user experience with a modern and responsive design. The backend, powered by Node.js and MongoDB, enables efficient data handling and real-time order management. Secure payments are facilitated through Stripe, while user authentication is managed via Auth0, ensuring robust security.",
       "links": {
-        "code": "https://github.com/MashookhKhanlol/todo-app",
+        "code": "https://github.com/MashookhKhanlol/Food-Delivery-App",
         "video": "",
-        "visit": "https://todo-app-omega-ten-70.vercel.app/"
+        "visit": "https://meal-dash-frontend.onrender.com/"
+      }
+    },
+    {
+      "name": "Vespera Blog",
+      "techstack": "React.js, Node.js, Appwrite, Tailwind CSS, TinyMCE",
+      "category": "Full Stack",
+      "duration": "Dec 2023",
+      "image": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80",
+      "desc": "Developed a React app allowing users to add, delete, and view blog posts, enhancing user engagement and content management. Built with Appwrite as the backend-as-a-service for authentication and database, TinyMCE for rich text editing, and Tailwind CSS for a clean, responsive UI.",
+      "links": {
+        "code": "",
+        "video": "",
+        "visit": "https://vespera-blog--chi.vercel.app/"
+      }
+    },
+    {
+      "name": "Tune Tutor - Music Course Website",
+      "techstack": "Next.js, TypeScript, Node.js, Tailwind CSS, Aceternity UI",
+      "category": "Full Stack",
+      "duration": "Jan 2024 - Feb 2024",
+      "image": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&q=80",
+      "desc": "Crafted a modern and interactive music course website using Next.js, providing users with a seamless learning experience. Built with TypeScript, Tailwind CSS, and Aceternity UI to deliver stunning animations and a visually rich interface. The platform showcases music courses, instructors, and learning paths in an engaging and accessible format.",
+      "links": {
+        "code": "https://github.com/MashookhKhanlol/Music_App_Nextjs",
+        "video": "",
+        "visit": "https://music-app-nextjs-nu.vercel.app/"
+      }
+    },
+    {
+      "name": "Nomisma - Personal Finance & Budget Tracker",
+      "techstack": "Next.js, TypeScript, React.js, Tailwind CSS, Supabase, Clerk, Gemini AI, Resend, React Email, Inngest",
+      "category": "Full Stack",
+      "duration": "Jan 2025 - April 2025",
+      "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+      "desc": "Nomisma is an intelligent personal finance tracker designed to help users manage their budgets, expenses, and financial goals effortlessly. Built with Next.js, TypeScript, ShadCN UI, and Tailwind CSS, it delivers a clean, responsive, and user-friendly interface. Supabase powers the backend with secure real-time data storage and instant sync across devices. AI features via Gemini AI enable receipt scanning and automatic transaction categorization with over 95% accuracy. Budget reports and notifications are delivered via Resend and React Email, while background tasks are managed through Inngest.",
+      "links": {
+        "code": "https://github.com/MashookhKhanlol/Nomisma",
+        "video": "",
+        "visit": "https://nomisma-five.vercel.app/"
+      }
+    },
+    {
+      "name": "Personal Developer Portfolio",
+      "techstack": "Next.js 13, TypeScript, Tailwind CSS, Framer Motion, Nodemailer, Firebase, Docker",
+      "category": "Full Stack",
+      "duration": "June 2026",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+      "desc": "A modern, fully responsive personal portfolio website built with Next.js 13 App Router and TypeScript. Features include dark/light mode toggle, typewriter animations, a working contact form powered by Nodemailer and Gmail SMTP, and a data-driven architecture where all content is managed through a single data.json file. Containerized with a production-grade multi-stage Docker build for easy deployment anywhere.",
+      "links": {
+        "code": "https://github.com/MashookhKhanlol/my-portfolio-next",
+        "video": "",
+        "visit": "https://jigarsable.vercel.app"
       }
     }
   ],
+
   "educations": [
     {
       "institute": "Nirmal Higher Secondary School | CBSE",
