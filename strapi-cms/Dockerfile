@@ -1,14 +1,17 @@
 # ─────────────────────────────────────────────────────────────────────────────
-# Stage 1: Build — installs all deps and compiles the Strapi admin panel
+# Stage 1: Build — use Debian (bookworm-slim) so sharp has prebuilt binaries.
+# Alpine requires compiling sharp from source which often fails in CI/VPS.
 # ─────────────────────────────────────────────────────────────────────────────
-FROM node:20-alpine AS build
+FROM node:20-bookworm-slim AS build
 
-# vips is required for image processing (sharp)
-RUN apk add --no-cache libc6-compat vips-dev python3 make g++
+# Install only what's needed for native module compilation (fallback safety)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 make g++ libvips-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Install dependencies first for better layer caching
+# Install deps first for better layer caching
 COPY package*.json ./
 RUN npm ci
 
@@ -17,11 +20,13 @@ COPY . .
 RUN npm run build
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Stage 2: Production — lean runtime image
+# Stage 2: Production — lean Debian slim runtime
 # ─────────────────────────────────────────────────────────────────────────────
-FROM node:20-alpine AS production
+FROM node:20-bookworm-slim AS production
 
-RUN apk add --no-cache libc6-compat vips
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libvips \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -36,15 +41,14 @@ COPY --from=build /app/src          ./src
 COPY --from=build /app/public       ./public
 COPY --from=build /app/database     ./database
 
-# Strapi needs a writable uploads dir even when using Cloudinary
-# (used for temporary files during upload processing)
+# Writable temp upload dir (Cloudinary handles final storage)
 RUN mkdir -p /app/public/uploads && chown -R node:node /app
 
 USER node
 
 EXPOSE 1337
 
-HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:1337/_health || exit 1
+HEALTHCHECK --interval=30s --timeout=10s --start-period=90s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:1337/_health', r => process.exit(r.statusCode === 204 ? 0 : 1)).on('error', () => process.exit(1))"
 
 CMD ["node", "node_modules/.bin/strapi", "start"]
