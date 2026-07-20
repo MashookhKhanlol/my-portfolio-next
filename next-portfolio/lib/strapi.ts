@@ -1,12 +1,17 @@
 /**
  * lib/strapi.ts
- * Strapi REST API client for the portfolio.
- * Transforms Strapi's nested response shape into the flat data.json shape
- * that all existing components already consume.
+ * Strapi v5 REST API client for the portfolio.
+ *
+ * ⚠️  Strapi v5 breaking change vs v4:
+ *     v4 response: { data: { id, attributes: { name, ... } } }
+ *     v5 response: { data: { id, name, ... } }   ← flat, no "attributes" wrapper
+ *
+ * This client handles the v5 flat format.
  */
 
 const STRAPI_URL =
-  process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+  process.env.NEXT_PUBLIC_STRAPI_URL?.replace(/\/$/, '') ||
+  'http://localhost:1337';
 
 // ---------------------------------------------------------------------------
 // Generic fetcher with ISR revalidation
@@ -14,36 +19,59 @@ const STRAPI_URL =
 export async function fetchStrapi<T = any>(
   path: string,
   revalidate = 60
-): Promise<T> {
-  const res = await fetch(`${STRAPI_URL}/api${path}`, {
-    next: { revalidate },
-    headers: { 'Content-Type': 'application/json' },
-  });
+): Promise<T | null> {
+  try {
+    const res = await fetch(`${STRAPI_URL}/api${path}`, {
+      next: { revalidate },
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-  if (!res.ok) {
-    throw new Error(
-      `Strapi fetch failed [${path}]: ${res.status} ${res.statusText}`
-    );
+    if (!res.ok) {
+      console.warn(`[Strapi] ${path} → ${res.status} ${res.statusText}`);
+      return null;
+    }
+
+    return res.json() as T;
+  } catch (err) {
+    console.warn(`[Strapi] fetch error for ${path}:`, err);
+    return null;
   }
-
-  return res.json() as T;
 }
 
 // ---------------------------------------------------------------------------
-// Helpers
+// Strapi v5 helpers
 // ---------------------------------------------------------------------------
 
-/** Extracts the URL from a Strapi media field (single image). */
+/** Extracts URL from a v5 media field (single image). */
 function mediaUrl(field: any): string {
-  return field?.data?.attributes?.url ?? '';
+  // v5: field is { id, url, formats, ... } — flat object
+  return field?.url ?? '';
 }
 
-/** Extracts plain attributes array from a Strapi collection response. */
-function attrs<T>(response: any): T[] {
-  return (response?.data ?? []).map((item: any) => ({
-    id: item.id,
-    ...item.attributes,
-  }));
+/** Extracts items from a v5 collection response.
+ *  v5: { data: [ { id, name, ... }, ... ], meta: { ... } }
+ *  v4: { data: [ { id, attributes: { name, ... } } ], meta: { ... } }
+ *  We handle both for safety.
+ */
+function items<T>(response: any): T[] {
+  if (!response?.data) return [];
+  return response.data.map((item: any) => {
+    // v4 compat: if item has attributes, spread them
+    if (item.attributes) return { id: item.id, ...item.attributes };
+    // v5: already flat
+    return item;
+  });
+}
+
+/** Extracts a single-type entry from a v5 response.
+ *  v5: { data: { id, name, ... } }
+ *  v4: { data: { id, attributes: { name, ... } } }
+ */
+function single(response: any): any {
+  if (!response?.data) return {};
+  const d = response.data;
+  if (d.attributes) return { id: d.id, ...d.attributes }; // v4 compat
+  return d; // v5 flat
 }
 
 // ---------------------------------------------------------------------------
@@ -55,31 +83,33 @@ async function fetchGlobal() {
 }
 
 async function fetchTitles() {
-  return fetchStrapi('/titles?sort=order:asc');
+  return fetchStrapi('/titles?sort=order:asc&pagination[limit]=50');
 }
 
 async function fetchTechStack() {
-  return fetchStrapi('/tech-stack-images?sort=order:asc');
+  return fetchStrapi('/tech-stack-images?sort=order:asc&pagination[limit]=50');
 }
 
 async function fetchSocials() {
-  return fetchStrapi('/socials?sort=order:asc');
+  return fetchStrapi('/socials?sort=order:asc&pagination[limit]=50');
 }
 
 async function fetchSkills() {
-  return fetchStrapi('/skills?sort=name:asc&pagination[limit]=100');
+  return fetchStrapi('/skills?sort=name:asc&pagination[limit]=200');
 }
 
 async function fetchProjects() {
-  return fetchStrapi('/projects?populate[image]=*&sort=order:asc&pagination[limit]=100');
+  return fetchStrapi(
+    '/projects?populate[image]=*&sort=order:asc&pagination[limit]=100&filters[publishedAt][$notNull]=true'
+  );
 }
 
 async function fetchEducations() {
-  return fetchStrapi('/educations?sort=order:asc');
+  return fetchStrapi('/educations?sort=order:asc&pagination[limit]=50');
 }
 
 async function fetchExperiences() {
-  return fetchStrapi('/experiences?sort=order:asc');
+  return fetchStrapi('/experiences?sort=order:asc&pagination[limit]=50');
 }
 
 // ---------------------------------------------------------------------------
@@ -107,67 +137,67 @@ export async function getPortfolioData() {
     fetchExperiences(),
   ]);
 
-  const g = globalRes?.data?.attributes ?? {};
+  // Strapi v5: single type is flat
+  const g = single(globalRes);
 
   // -- main section --
   const main = {
-    name: g.name ?? '',
-    shortDesc: g.shortDesc ?? '',
-    titles: attrs<{ text: string }>(titlesRes).map((t) => t.text),
-    heroImage: mediaUrl(g.heroImage) || g.heroImageUrl || '',
-    techStackImages: attrs<{ url: string }>(techStackRes).map((t) => t.url),
+    name:       g.name       ?? '',
+    shortDesc:  g.shortDesc  ?? '',
+    titles:     items<{ text: string }>(titlesRes).map((t) => t.text),
+    heroImage:  mediaUrl(g.heroImage) || g.heroImageUrl || '',
+    techStackImages: items<{ url: string }>(techStackRes).map((t) => t.url),
   };
 
   // -- about section --
   const about = {
-    aboutImage: mediaUrl(g.aboutImage) || g.aboutImageUrl || '',
+    aboutImage:        mediaUrl(g.aboutImage) || g.aboutImageUrl || '',
     aboutImageCaption: g.aboutImageCaption ?? '',
-    title: g.aboutTitle ?? '',
-    about: g.about ?? '',
-    callUrl: g.callUrl ?? '',
-    resumeUrl: g.resumeUrl ?? '',
+    title:             g.aboutTitle ?? '',
+    about:             g.about      ?? '',
+    callUrl:           g.callUrl    ?? '',
+    resumeUrl:         g.resumeUrl  ?? '',
   };
 
   // -- socials --
-  const socials = attrs<{ icon: string; link: string }>(socialsRes).map(
+  const socials = items<{ icon: string; link: string }>(socialsRes).map(
     ({ icon, link }) => ({ icon, link })
   );
 
   // -- skills --
-  const skills = attrs<{ name: string; image: string; category: string }>(
+  const skills = items<{ name: string; image: string; category: string }>(
     skillsRes
   ).map(({ name, image, category }) => ({ name, image, category }));
 
   // -- projects --
-  const projects = attrs<any>(projectsRes).map((p) => ({
-    name: p.name ?? '',
+  const projects = items<any>(projectsRes).map((p) => ({
+    name:      p.name      ?? '',
     techstack: p.techstack ?? '',
-    category: p.category ?? '',
-    duration: p.duration ?? '',
-    // image: prefer Cloudinary-uploaded media, fall back to imageUrl text field
-    image: mediaUrl(p.image) || p.imageUrl || '',
-    desc: p.desc ?? '',
+    category:  p.category  ?? '',
+    duration:  p.duration  ?? '',
+    image:     mediaUrl(p.image) || p.imageUrl || '',
+    desc:      p.desc      ?? '',
     links: {
-      code: p.codeLink ?? '',
+      code:  p.codeLink  ?? '',
       video: p.videoLink ?? '',
       visit: p.visitLink ?? '',
     },
   }));
 
   // -- educations --
-  const educations = attrs<any>(educationsRes).map((e) => ({
+  const educations = items<any>(educationsRes).map((e) => ({
     institute: e.institute ?? '',
-    degree: e.degree ?? '',
-    duration: e.duration ?? '',
-    desc: e.desc ?? undefined,
+    degree:    e.degree    ?? '',
+    duration:  e.duration  ?? '',
+    desc:      e.desc      ?? undefined,
   }));
 
   // -- experiences --
-  const experiences = attrs<any>(experiencesRes).map((e) => ({
-    company: e.company ?? '',
+  const experiences = items<any>(experiencesRes).map((e) => ({
+    company:  e.company  ?? '',
     position: e.position ?? '',
     duration: e.duration ?? '',
-    desc: e.desc ?? [],
+    desc:     e.desc     ?? [],
   }));
 
   return { main, about, socials, skills, projects, educations, experiences };
