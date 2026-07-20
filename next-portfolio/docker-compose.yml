@@ -5,7 +5,8 @@ services:
       dockerfile: Dockerfile
       args:
         # ── Public vars (baked into the JS bundle at build time) ──────────────
-        NEXT_PUBLIC_DATA_URL: ${NEXT_PUBLIC_DATA_URL}
+        NEXT_PUBLIC_DATA_URL:    ${NEXT_PUBLIC_DATA_URL}
+        NEXT_PUBLIC_STRAPI_URL:  ${NEXT_PUBLIC_STRAPI_URL}
     image: next-portfolio:latest
     container_name: next-portfolio
     restart: unless-stopped
@@ -13,9 +14,10 @@ services:
       - "3000:3000"
     environment:
       # ── Server-side only vars (never exposed to the browser) ─────────────
-      NODE_ENV: production
-      GMAIL_USER: ${GMAIL_USER}
-      GMAIL_APP_PASSWORD: ${GMAIL_APP_PASSWORD}
+      NODE_ENV:            production
+      GMAIL_USER:          ${GMAIL_USER}
+      GMAIL_APP_PASSWORD:  ${GMAIL_APP_PASSWORD}
+      REVALIDATE_SECRET:   ${REVALIDATE_SECRET}
     # Load .env.local automatically for local development convenience
     env_file:
       - .env.local

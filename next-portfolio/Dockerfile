@@ -10,7 +10,7 @@ WORKDIR /app
 
 # Copy package manifests and install deps
 COPY package.json package-lock.json ./
-RUN npm ci --legacy-peer-deps
+RUN npm install --legacy-peer-deps
 
 # ─────────────────────────────────────────────
 # Stage 2: builder — compile the Next.js app
@@ -28,6 +28,9 @@ COPY . .
 # Build arguments passed in from docker-compose (needed at build time for NEXT_PUBLIC_* vars)
 ARG NEXT_PUBLIC_DATA_URL
 ENV NEXT_PUBLIC_DATA_URL=$NEXT_PUBLIC_DATA_URL
+
+ARG NEXT_PUBLIC_STRAPI_URL
+ENV NEXT_PUBLIC_STRAPI_URL=$NEXT_PUBLIC_STRAPI_URL
 
 # Disable Next.js telemetry during the build
 ENV NEXT_TELEMETRY_DISABLED=1
