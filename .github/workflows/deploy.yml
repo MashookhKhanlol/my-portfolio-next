@@ -89,7 +89,16 @@ jobs:
             docker image prune -f
 
             # ── 6. Build a clean image with no layer cache ────────────────
-            #    .env.local is loaded automatically by docker-compose env_file
+            # IMPORTANT: NEXT_PUBLIC_* vars must be exported as shell env vars
+            # BEFORE docker compose build so they are passed as build ARGs
+            # and baked into the Next.js bundle at build time.
+            echo "==> Exporting build-time env vars..."
+            export NEXT_PUBLIC_STRAPI_URL="${{ secrets.NEXT_PUBLIC_STRAPI_URL }}"
+            export NEXT_PUBLIC_DATA_URL="${{ secrets.NEXT_PUBLIC_DATA_URL }}"
+            export REVALIDATE_SECRET="${{ secrets.REVALIDATE_SECRET }}"
+            export GMAIL_USER="${{ secrets.GMAIL_USER }}"
+            export GMAIL_APP_PASSWORD="${{ secrets.GMAIL_APP_PASSWORD }}"
+
             echo "==> Building clean image (no cache) and starting container..."
             docker compose build --no-cache
             docker compose up -d
