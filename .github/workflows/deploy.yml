@@ -8,6 +8,7 @@ on:
     branches: [main, master]
     paths:
       - "next-portfolio/**"
+      - "strapi-cms/**"
       - ".github/workflows/deploy.yml"
   workflow_dispatch: # allow manual trigger from GitHub UI
 
@@ -66,10 +67,12 @@ jobs:
             # This creates/overwrites the file on every deploy so secrets
             # stay up-to-date without manual VPS access.
             echo "==> Writing .env.local from GitHub secrets..."
-            cat > .env.local <<'ENVEOF'
+            cat > .env.local << 'ENVEOF'
             GMAIL_USER=${{ secrets.GMAIL_USER }}
             GMAIL_APP_PASSWORD=${{ secrets.GMAIL_APP_PASSWORD }}
             NEXT_PUBLIC_DATA_URL=${{ secrets.NEXT_PUBLIC_DATA_URL }}
+            NEXT_PUBLIC_STRAPI_URL=${{ secrets.NEXT_PUBLIC_STRAPI_URL }}
+            REVALIDATE_SECRET=${{ secrets.REVALIDATE_SECRET }}
             ENVEOF
             # Strip leading whitespace from heredoc
             sed -i 's/^[[:space:]]*//' .env.local
