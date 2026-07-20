@@ -79,7 +79,8 @@ function single(response: any): any {
 // ---------------------------------------------------------------------------
 
 async function fetchGlobal() {
-  return fetchStrapi('/global?populate[heroImage]=*&populate[aboutImage]=*');
+  // No populate needed — heroImageUrl/aboutImageUrl are plain text fields, not media relations
+  return fetchStrapi('/global');
 }
 
 async function fetchTitles() {
@@ -99,9 +100,8 @@ async function fetchSkills() {
 }
 
 async function fetchProjects() {
-  return fetchStrapi(
-    '/projects?populate[image]=*&sort=order:asc&pagination[limit]=100'
-  );
+  // No populate needed — imageUrl is a plain text field, not a Strapi media relation
+  return fetchStrapi('/projects?sort=order:asc&pagination[limit]=100');
 }
 
 async function fetchEducations() {
