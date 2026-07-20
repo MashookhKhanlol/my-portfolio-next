@@ -1,50 +1,33 @@
 # ─────────────────────────────────────────────────────────────────────────────
-# Stage 1: Build — use Debian (bookworm-slim) so sharp has prebuilt binaries.
-# Alpine requires compiling sharp from source which often fails in CI/VPS.
+# Single-stage production image for Strapi v5
+# Debian bookworm-slim: sharp has prebuilt binaries, no compilation issues
 # ─────────────────────────────────────────────────────────────────────────────
-FROM node:20-bookworm-slim AS build
+FROM node:20-bookworm-slim
 
-# Install only what's needed for native module compilation (fallback safety)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3 make g++ libvips-dev \
+    python3 make g++ libvips \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Install deps first for better layer caching
+# ── Install dependencies ───────────────────────────────────────────────────
 COPY package*.json ./
 RUN npm ci
 
-# Copy source and build the Strapi admin UI
+# ── Copy source code ───────────────────────────────────────────────────────
 COPY . .
 
-# Increase Node.js heap limit — Strapi admin panel build needs ~1GB+ RAM
+# ── Build Strapi (compiles TS + builds admin panel) ───────────────────────
+# NODE_OPTIONS: Strapi admin panel webpack build needs ~1GB+ RAM
 ENV NODE_OPTIONS="--max-old-space-size=1400"
 RUN npm run build
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Stage 2: Production — lean Debian slim runtime
-# ─────────────────────────────────────────────────────────────────────────────
-FROM node:20-bookworm-slim AS production
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libvips \
-    && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /app
-
+# ── Runtime config ─────────────────────────────────────────────────────────
 ENV NODE_ENV=production
+# Clear build-time NODE_OPTIONS so the server runs without heap restriction
+ENV NODE_OPTIONS=""
 
-# Copy compiled artifacts from build stage
-COPY --from=build /app/build        ./build
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/package.json ./package.json
-COPY --from=build /app/config       ./config
-COPY --from=build /app/src          ./src
-COPY --from=build /app/public       ./public
-COPY --from=build /app/database     ./database
-
-# Writable temp upload dir (Cloudinary handles final storage)
+# Strapi needs a writable uploads dir (Cloudinary handles actual storage)
 RUN mkdir -p /app/public/uploads && chown -R node:node /app
 
 USER node
