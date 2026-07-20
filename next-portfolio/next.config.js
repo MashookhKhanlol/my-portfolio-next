@@ -2,9 +2,6 @@
 const nextConfig = {
   // Required for Docker: emits a standalone server bundle (node server.js)
   output: 'standalone',
-  experimental: {
-    appDir: true,
-  },
   images: {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
