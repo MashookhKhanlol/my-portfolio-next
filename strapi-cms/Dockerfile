@@ -17,6 +17,9 @@ RUN npm ci
 
 # Copy source and build the Strapi admin UI
 COPY . .
+
+# Increase Node.js heap limit — Strapi admin panel build needs ~1GB+ RAM
+ENV NODE_OPTIONS="--max-old-space-size=1400"
 RUN npm run build
 
 # ─────────────────────────────────────────────────────────────────────────────
