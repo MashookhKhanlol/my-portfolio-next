@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "socials",
+  "info": {
+    "singularName": "social",
+    "pluralName": "socials",
+    "displayName": "Social",
+    "description": "Social media links (LinkedIn, GitHub, Instagram, Twitter)"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "icon": {
+      "type": "string",
+      "required": true,
+      "description": "react-icons name, e.g. FaLinkedin, FaGithub, FaInstagram, FaTwitter"
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

@@ -1,0 +1,71 @@
+services:
+  # ── PostgreSQL Database ────────────────────────────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: strapi-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB:       strapi
+      POSTGRES_USER:     strapi
+      POSTGRES_PASSWORD: strapi_db_pass_2024   # ← change this to a strong password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U strapi -d strapi"]
+      interval: 10s
+      timeout:  5s
+      retries:  5
+
+  # ── Strapi CMS ─────────────────────────────────────────────────────────────
+  strapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portfolio-strapi:latest
+    container_name: strapi-cms
+    restart: unless-stopped
+    ports:
+      - "1337:1337"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - strapi-uploads:/app/public/uploads
+    environment:
+      # ── Server ──────────────────────────────────────────────────────────────
+      HOST: "0.0.0.0"
+      PORT: "1337"
+      NODE_ENV: "production"
+
+      # ── Strapi Secrets (keep these private) ─────────────────────────────────
+      APP_KEYS: "xyZCjQ27Wb/Qz3CoO1f9Tg==,RbhiYgzKgwfC+02UrwJZSw==,lefWysbFy7GONKKAyZtU8A==,DQA/ITiYjgfENggKk9iHbQ=="
+      API_TOKEN_SALT: "O3YsMF+X4cgtS5Qo3H2Bag=="
+      ADMIN_JWT_SECRET: "v8b52TUya96Hwn3/2KOUTg=="
+      JWT_SECRET: "aj1M/CsqRUZe9NaJX1ocnQ=="
+      TRANSFER_TOKEN_SALT: "orP128TWVTLQUJ4lEiGvkw=="
+      ENCRYPTION_KEY: "HMkCYK/P7ijOhsK5MpKAVw=="
+
+      # ── Database (points to the postgres service above) ──────────────────────
+      DATABASE_CLIENT:   "postgres"
+      DATABASE_HOST:     "postgres"      # Docker service name — DO NOT CHANGE
+      DATABASE_PORT:     "5432"
+      DATABASE_NAME:     "strapi"
+      DATABASE_USERNAME: "strapi"
+      DATABASE_PASSWORD: "strapi_db_pass_2024"   # ← must match POSTGRES_PASSWORD above
+      DATABASE_SSL:      "false"
+
+      # ── Cloudinary ───────────────────────────────────────────────────────────
+      CLOUDINARY_NAME:   "rparxkdc"
+      CLOUDINARY_KEY:    "319881446147894"
+      CLOUDINARY_SECRET: "4_KVEBaELvLQgBnyBFLxjIFsyw4"
+
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:1337/_health"]
+      interval: 30s
+      timeout:  10s
+      retries:  3
+      start_period: 90s
+
+volumes:
+  postgres-data:
+  strapi-uploads:

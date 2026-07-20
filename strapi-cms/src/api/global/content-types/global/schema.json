@@ -1,0 +1,60 @@
+{
+  "kind": "singleType",
+  "collectionName": "globals",
+  "info": {
+    "singularName": "global",
+    "pluralName": "globals",
+    "displayName": "Global",
+    "description": "Site-wide settings: hero section, about section, name, bio"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "default": "Your Name"
+    },
+    "shortDesc": {
+      "type": "text",
+      "required": true
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "heroImageUrl": {
+      "type": "string",
+      "description": "Fallback: external URL if heroImage media is not set"
+    },
+    "aboutImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "aboutImageUrl": {
+      "type": "string",
+      "description": "Fallback: external URL if aboutImage media is not set"
+    },
+    "aboutImageCaption": {
+      "type": "string"
+    },
+    "aboutTitle": {
+      "type": "string"
+    },
+    "about": {
+      "type": "text"
+    },
+    "callUrl": {
+      "type": "string"
+    },
+    "resumeUrl": {
+      "type": "string"
+    }
+  }
+}

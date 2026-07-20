@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+build/
+dist/
+.cache/
+.tmp/
+
+# Environment secrets — NEVER commit these
+.env
+.env.local
+
+# Local uploads (Cloudinary handles production storage)
+public/uploads/*
+!public/uploads/.gitkeep
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log

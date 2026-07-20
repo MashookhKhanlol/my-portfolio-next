@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tech_stack_images",
+  "info": {
+    "singularName": "tech-stack-image",
+    "pluralName": "tech-stack-images",
+    "displayName": "Tech Stack Image",
+    "description": "Tech icons shown in the hero section tech stack strip"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true,
+      "description": "External icon URL (e.g. img.icons8.com)"
+    },
+    "alt": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

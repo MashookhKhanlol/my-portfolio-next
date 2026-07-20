@@ -156,15 +156,28 @@
     },
     {
       "name": "Personal Developer Portfolio",
-      "techstack": "Next.js 13, TypeScript, Tailwind CSS, Framer Motion, Nodemailer, Firebase, Docker",
+      "techstack": "Next.js 13, TypeScript, Tailwind CSS, Framer Motion, Nodemailer, Docker, GitHub Actions",
       "category": "Full Stack",
       "duration": "June 2026",
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      "desc": "A modern, fully responsive personal portfolio website built with Next.js 13 App Router and TypeScript. Features include dark/light mode toggle, typewriter animations, a working contact form powered by Nodemailer and Gmail SMTP, and a data-driven architecture where all content is managed through a single data.json file. Containerized with a production-grade multi-stage Docker build for easy deployment anywhere.",
+      "desc": "A modern, fully responsive personal portfolio website built with Next.js 13 App Router and TypeScript. Features include dark/light mode toggle, typewriter animations, a working contact form powered by Nodemailer and Gmail SMTP, and a data-driven architecture where all content is managed through a single data.json file. Containerized with a production-grade multi-stage Docker build and automated CI/CD via GitHub Actions.",
       "links": {
         "code": "https://github.com/MashookhKhanlol/my-portfolio-next/tree/master/next-portfolio",
         "video": "",
         "visit": "https://portfolio.flowcrafted.me/"
+      }
+    },
+    {
+      "name": "Patient Management System Microservice",
+      "techstack": "Java, Spring Boot, Spring Cloud Gateway, WebFlux, Spring Security, JWT, gRPC, Apache Kafka, Protobuf, JPA, PostgreSQL, AWS CDK, Docker, LocalStack",
+      "category": "Backend",
+      "duration": "June 2026",
+      "image": "/patient-management-thumbnail.png",
+      "desc": "A production-grade microservices system built with Java and Spring Boot, featuring an API Gateway (Spring Cloud Gateway + WebFlux) routing requests to four specialized services: auth-service (JWT-based authentication via Spring Security with PostgreSQL), patient-service (JPA/PostgreSQL with gRPC client and Kafka producer), billing-service (gRPC server), and analytics-service (Kafka consumer with Protobuf). Infrastructure is provisioned with AWS CDK, containerized via Docker, and locally emulated using LocalStack.",
+      "links": {
+        "code": "https://github.com/MashookhKhanlol/java-spring-microservice/blob/main/README.md",
+        "video": "",
+        "visit": ""
       }
     }
   ],

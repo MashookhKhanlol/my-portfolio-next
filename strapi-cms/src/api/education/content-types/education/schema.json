@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "educations",
+  "info": {
+    "singularName": "education",
+    "pluralName": "educations",
+    "displayName": "Education",
+    "description": "Academic education history"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "institute": {
+      "type": "string",
+      "required": true
+    },
+    "degree": {
+      "type": "string",
+      "required": true
+    },
+    "duration": {
+      "type": "string",
+      "required": true
+    },
+    "desc": {
+      "type": "json",
+      "description": "Array of description bullet strings"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

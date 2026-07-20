@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skills",
+  "info": {
+    "singularName": "skill",
+    "pluralName": "skills",
+    "displayName": "Skill",
+    "description": "Technical skills with icons and categories"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "string",
+      "required": true,
+      "description": "External icon URL (img.icons8.com, skillicons.dev, etc.)"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Languages",
+        "Frontend",
+        "Backend",
+        "Database",
+        "Tools"
+      ],
+      "required": true
+    }
+  }
+}

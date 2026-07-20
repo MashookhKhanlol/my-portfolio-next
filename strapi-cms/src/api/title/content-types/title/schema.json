@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "titles",
+  "info": {
+    "singularName": "title",
+    "pluralName": "titles",
+    "displayName": "Title",
+    "description": "Typewriter titles shown in the hero section"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

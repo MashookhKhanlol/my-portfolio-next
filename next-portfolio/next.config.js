@@ -18,7 +18,11 @@ const nextConfig = {
       'skillicons.dev',
       'cdn.simpleicons.org',
       'images.unsplash.com',
-    ]
+      // ── Strapi VPS ──────────────────────────────────────────────────────
+      // Replace this with your actual Strapi subdomain before deploying.
+      // e.g. 'strapi.yourdomain.com'
+      'strapi.yourdomain.com',
+    ],
   }
 }
 

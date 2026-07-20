@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": "Portfolio projects with tech stack, description and links"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "techstack": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Frontend",
+        "Backend",
+        "Full Stack",
+        "MERN Stack",
+        "DevOps",
+        "AI/ML"
+      ],
+      "required": true
+    },
+    "duration": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"],
+      "description": "Upload project screenshot/thumbnail — stored in Cloudinary"
+    },
+    "imageUrl": {
+      "type": "string",
+      "description": "Fallback: external image URL (Unsplash, etc.) if no media uploaded"
+    },
+    "desc": {
+      "type": "text",
+      "required": true
+    },
+    "codeLink": {
+      "type": "string"
+    },
+    "videoLink": {
+      "type": "string"
+    },
+    "visitLink": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}
