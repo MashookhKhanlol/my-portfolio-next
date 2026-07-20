@@ -100,7 +100,7 @@ async function fetchSkills() {
 
 async function fetchProjects() {
   return fetchStrapi(
-    '/projects?populate[image]=*&sort=order:asc&pagination[limit]=100&filters[publishedAt][$notNull]=true'
+    '/projects?populate[image]=*&sort=order:asc&pagination[limit]=100'
   );
 }
 
@@ -142,21 +142,21 @@ export async function getPortfolioData() {
 
   // -- main section --
   const main = {
-    name:       g.name       ?? '',
-    shortDesc:  g.shortDesc  ?? '',
-    titles:     items<{ text: string }>(titlesRes).map((t) => t.text),
-    heroImage:  mediaUrl(g.heroImage) || g.heroImageUrl || '',
+    name: g.name ?? '',
+    shortDesc: g.shortDesc ?? '',
+    titles: items<{ text: string }>(titlesRes).map((t) => t.text),
+    heroImage: mediaUrl(g.heroImage) || g.heroImageUrl || '',
     techStackImages: items<{ url: string }>(techStackRes).map((t) => t.url),
   };
 
   // -- about section --
   const about = {
-    aboutImage:        mediaUrl(g.aboutImage) || g.aboutImageUrl || '',
+    aboutImage: mediaUrl(g.aboutImage) || g.aboutImageUrl || '',
     aboutImageCaption: g.aboutImageCaption ?? '',
-    title:             g.aboutTitle ?? '',
-    about:             g.about      ?? '',
-    callUrl:           g.callUrl    ?? '',
-    resumeUrl:         g.resumeUrl  ?? '',
+    title: g.aboutTitle ?? '',
+    about: g.about ?? '',
+    callUrl: g.callUrl ?? '',
+    resumeUrl: g.resumeUrl ?? '',
   };
 
   // -- socials --
@@ -171,14 +171,14 @@ export async function getPortfolioData() {
 
   // -- projects --
   const projects = items<any>(projectsRes).map((p) => ({
-    name:      p.name      ?? '',
+    name: p.name ?? '',
     techstack: p.techstack ?? '',
-    category:  p.category  ?? '',
-    duration:  p.duration  ?? '',
-    image:     mediaUrl(p.image) || p.imageUrl || '',
-    desc:      p.desc      ?? '',
+    category: p.category ?? '',
+    duration: p.duration ?? '',
+    image: mediaUrl(p.image) || p.imageUrl || '',
+    desc: p.desc ?? '',
     links: {
-      code:  p.codeLink  ?? '',
+      code: p.codeLink ?? '',
       video: p.videoLink ?? '',
       visit: p.visitLink ?? '',
     },
@@ -187,17 +187,17 @@ export async function getPortfolioData() {
   // -- educations --
   const educations = items<any>(educationsRes).map((e) => ({
     institute: e.institute ?? '',
-    degree:    e.degree    ?? '',
-    duration:  e.duration  ?? '',
-    desc:      e.desc      ?? undefined,
+    degree: e.degree ?? '',
+    duration: e.duration ?? '',
+    desc: e.desc ?? undefined,
   }));
 
   // -- experiences --
   const experiences = items<any>(experiencesRes).map((e) => ({
-    company:  e.company  ?? '',
+    company: e.company ?? '',
     position: e.position ?? '',
     duration: e.duration ?? '',
-    desc:     e.desc     ?? [],
+    desc: e.desc ?? [],
   }));
 
   return { main, about, socials, skills, projects, educations, experiences };

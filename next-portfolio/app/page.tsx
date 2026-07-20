@@ -7,16 +7,16 @@ import { getPortfolioData } from '@/lib/strapi'
 
 async function getData() {
   // ── Priority 1: Strapi CMS (self-hosted) ─────────────────────────────────
-  // If NEXT_PUBLIC_STRAPI_URL is set, fetch all content from Strapi.
-  // The response is already shaped to match the existing data.json structure.
   if (process.env.NEXT_PUBLIC_STRAPI_URL) {
     try {
-      return await getPortfolioData()
+      const strapiData = await getPortfolioData()
+      // Guard: if Strapi connected but Global has no content yet, fall back
+      // so the site doesn't render broken while content is being migrated.
+      const hasContent = strapiData?.main?.name || strapiData?.projects?.length > 0
+      if (hasContent) return strapiData
+      console.warn('[getData] Strapi connected but no content yet — falling back to legacy source')
     } catch (err) {
-      console.warn(
-        '[getData] Strapi unavailable — falling back to legacy source:',
-        err
-      )
+      console.warn('[getData] Strapi unavailable — falling back to legacy source:', err)
     }
   }
 

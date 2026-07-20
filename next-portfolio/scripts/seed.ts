@@ -19,8 +19,13 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
 
-const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
+// ESM equivalent of __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const STRAPI_URL = (process.env.STRAPI_URL || 'http://localhost:1337').trim().replace(/\/$/, '');
 const STRAPI_TOKEN = process.env.STRAPI_TOKEN || 'YOUR_STRAPI_API_TOKEN_HERE';
 
 const headers = {
