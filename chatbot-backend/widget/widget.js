@@ -32,6 +32,17 @@
     #chatbot-widget * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
     #chatbot-widget { position: fixed; ${POSITION.includes('right') ? 'right:24px' : 'left:24px'}; bottom:24px; z-index:999999; }
 
+    /* ── Markdown formatting inside bubbles ─────────────────────────── */
+    .msg-bubble b, .msg-bubble strong { font-weight: 600; }
+    .msg-bubble em { font-style: italic; }
+    .msg-bubble code { background: rgba(255,255,255,0.15); border-radius: 4px; padding: 1px 5px; font-family: monospace; font-size: 12px; }
+    .msg-bubble ol, .msg-bubble ul { margin: 6px 0 6px 16px; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+    .msg-bubble li { line-height: 1.5; }
+    .msg-bubble p { margin: 0 0 6px 0; }
+    .msg-bubble p:last-child { margin-bottom: 0; }
+    .msg-bubble h3 { font-size: 13.5px; font-weight: 600; margin: 4px 0 2px 0; }
+    .msg-bubble a { color: inherit; text-decoration: underline; }
+
     #chatbot-bubble {
       width:56px; height:56px; border-radius:50%;
       background:${ACCENT}; color:#fff; border:none;
@@ -170,6 +181,56 @@
   const uploadBtn  = document.getElementById('chatbot-upload-btn');
   const uploadInput= document.getElementById('chatbot-upload-input');
 
+  // ── Markdown renderer ─────────────────────────────────────────────────────
+  function parseMarkdown(text) {
+    // Escape HTML first to prevent XSS
+    let html = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    // Numbered lists  (1. item)
+    html = html.replace(/^(\d+\.\s.+(?:\n(?!\n).+)*)/gm, (match) => {
+      const items = match.split(/\n(?=\d+\.\s)/).map(l => `<li>${l.replace(/^\d+\.\s/, '').trim()}</li>`).join('');
+      return `<ol>${items}</ol>`;
+    });
+
+    // Bullet lists (- item or * item)
+    html = html.replace(/^[-*]\s+(.+(?:\n(?![-*\n]).+)*)/gm, (_, item) => {
+      return `<ul><li>${item.trim()}</li></ul>`;
+    });
+    // Merge consecutive ul/ol tags
+    html = html.replace(/<\/ul>\n?<ul>/g, '');
+    html = html.replace(/<\/ol>\n?<ol>/g, '');
+
+    // Headers (### ## #)
+    html = html.replace(/^#{1,3}\s+(.+)$/gm, '<h3>$1</h3>');
+
+    // Bold **text** or __text__
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
+
+    // Italic *text* or _text_
+    html = html.replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
+    html = html.replace(/_([^_\n]+?)_/g, '<em>$1</em>');
+
+    // Inline code `code`
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+    // URLs → clickable links
+    html = html.replace(
+      /(https?:\/\/[^\s<]+)/g,
+      '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
+    );
+
+    // Paragraphs — double newlines
+    html = html.replace(/\n{2,}/g, '</p><p>');
+    // Single newlines → <br>
+    html = html.replace(/\n/g, '<br>');
+
+    return `<p>${html}</p>`;
+  }
+
   // ── Helpers ───────────────────────────────────────────────────────────────
   function addMessage(role, text, sources = []) {
     const row = document.createElement('div');
@@ -177,7 +238,13 @@
 
     const bubble = document.createElement('div');
     bubble.className = 'msg-bubble';
-    bubble.textContent = text;
+
+    // Render markdown for assistant messages, plain text for user
+    if (role === 'assistant') {
+      bubble.innerHTML = parseMarkdown(text);
+    } else {
+      bubble.textContent = text;
+    }
 
     if (sources && sources.length) {
       const srcDiv = document.createElement('div');
