@@ -1,0 +1,79 @@
+version: "3.9"
+
+services:
+  # ── ChatBot Backend API ────────────────────────────────────────────────────
+  chatbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portfolio-chatbot:latest
+    container_name: chatbot-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    depends_on:
+      chatbot-db:
+        condition: service_healthy
+      chatbot-redis:
+        condition: service_healthy
+    environment:
+      GROQ_API_KEY:     ${GROQ_API_KEY}
+      DATABASE_URL:     postgresql+asyncpg://chatbot:${CHATBOT_DB_PASS:-chatbot_pass}@chatbot-db:5432/chatbot
+      REDIS_URL:        redis://chatbot-redis:6379/0
+      ADMIN_API_KEY:    ${ADMIN_API_KEY:-changeme}
+      STRAPI_TOKEN:     ${STRAPI_TOKEN:-}
+      CORS_ORIGINS:     ${CORS_ORIGINS:-*}
+      ENVIRONMENT:      production
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # ── Dedicated PostgreSQL for chatbot (with pgvector) ─────────────────────
+  chatbot-db:
+    image: pgvector/pgvector:pg16
+    container_name: chatbot-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB:       chatbot
+      POSTGRES_USER:     chatbot
+      POSTGRES_PASSWORD: ${CHATBOT_DB_PASS:-chatbot_pass}
+    volumes:
+      - chatbot-db-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chatbot -d chatbot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis for session management ──────────────────────────────────────────
+  chatbot-redis:
+    image: redis:7-alpine
+    container_name: chatbot-redis
+    restart: unless-stopped
+    command: redis-server --maxmemory 64mb --maxmemory-policy allkeys-lru
+    deploy:
+      resources:
+        limits:
+          memory: 96M
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  chatbot-db-data:

@@ -9,6 +9,7 @@ on:
     paths:
       - "next-portfolio/**"
       - "strapi-cms/**"
+      - "chatbot-backend/**"
       - ".github/workflows/deploy.yml"
   workflow_dispatch: # allow manual trigger from GitHub UI
 
@@ -119,3 +120,53 @@ jobs:
             echo ""
             echo "==> Disk usage after cleanup:"
             docker system df
+
+  # ── Chatbot Backend Deploy ─────────────────────────────────────────────────
+  deploy-chatbot:
+    name: Deploy Chatbot Backend
+    runs-on: ubuntu-latest
+    # Only run when chatbot-backend files changed
+    if: |
+      contains(github.event.head_commit.modified, 'chatbot-backend') ||
+      github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Deploy Chatbot via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host:     ${{ secrets.HOST_IP }}
+          username: ${{ secrets.SSH_USER }}
+          key:      ${{ secrets.SSH_PRIVATE_KEY }}
+          port:     22
+
+          script: |
+            set -e
+
+            DEPLOY_DIR=~/websites/next-portfolio
+
+            echo "==> Syncing code..."
+            cd "$DEPLOY_DIR"
+            git pull origin master
+
+            cd chatbot-backend
+
+            echo "==> Writing chatbot .env from secrets..."
+            cat > .env << 'ENVEOF'
+            GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}
+            ADMIN_API_KEY=${{ secrets.CHATBOT_ADMIN_KEY }}
+            STRAPI_TOKEN=${{ secrets.STRAPI_TOKEN }}
+            CHATBOT_DB_PASS=${{ secrets.CHATBOT_DB_PASS }}
+            CORS_ORIGINS=https://portfolio.flowcrafted.me
+            ENVIRONMENT=production
+            ENVEOF
+            sed -i 's/^[[:space:]]*//' .env
+
+            echo "==> Rebuilding chatbot containers..."
+            docker compose down
+            docker compose build --no-cache
+            docker compose up -d
+
+            docker image prune -f
+
+            echo "==> Chatbot deploy complete!"
+            docker ps | grep chatbot

@@ -1,0 +1,16 @@
+.env
+.env.local
+
+__pycache__/
+*.pyc
+.cache/
+*.egg-info/
+dist/
+.venv/
+venv/
+.pytest_cache/
+htmlcov/
+.coverage
+.mypy_cache/
+documents/terms-private.md
+documents/rates.md

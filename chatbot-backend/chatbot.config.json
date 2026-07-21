@@ -1,0 +1,53 @@
+{
+  "site_name": "Mashookh Khan — Portfolio",
+  "site_url": "https://portfolio.flowcrafted.me",
+  "site_id": "portfolio",
+
+  "strapi": {
+    "url": "https://strapi.flowcrafted.me",
+    "collections": {
+      "projects":    { "fields": ["name","techstack","category","duration","desc","codeLink","visitLink"] },
+      "experiences": { "fields": ["company","position","duration","desc"] },
+      "skills":      { "fields": ["name","category"] },
+      "educations":  { "fields": ["institute","degree","duration","desc"] },
+      "socials":     { "fields": ["icon","link"] }
+    }
+  },
+
+  "models": {
+    "router":      "llama-3.1-8b-instant",
+    "synthesizer": "llama-3.3-70b-versatile",
+    "vision":      "meta-llama/llama-4-scout-17b-16e-instruct"
+  },
+
+  "persona": {
+    "name":  "Mash",
+    "full_name": "Mashookh's AI Assistant",
+    "avatar": "🤖",
+    "tone":  "professional, friendly, concise",
+    "scope": "Answer only questions related to Mashookh Khan's portfolio, projects, skills, experience, and contact information. Politely decline out-of-scope questions."
+  },
+
+  "widget": {
+    "theme":        "dark",
+    "position":     "bottom-right",
+    "accent_color": "#7c3aed",
+    "greeting":     "Hi! I'm Mash 👋 Ask me anything about Mashookh's work, projects, or how to get in touch."
+  },
+
+  "rag": {
+    "collections":   ["portfolio", "faq"],
+    "top_k":         5,
+    "min_similarity": 0.35
+  },
+
+  "terms": {
+    "collections": ["terms"],
+    "strict_mode": true
+  },
+
+  "support": {
+    "contact_email": "mashookhkhan@example.com",
+    "linkedin":      "https://linkedin.com/in/mashookhkhan"
+  }
+}
