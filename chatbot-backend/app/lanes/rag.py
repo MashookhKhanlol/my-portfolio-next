@@ -28,12 +28,12 @@ async def retrieve(query: str, db: AsyncSession, collection_filter: List[str] | 
             chunk_text,
             source_url,
             page_title,
-            1 - (embedding <=> :embedding::vector) AS similarity
+            1 - (embedding <=> CAST(:embedding AS vector)) AS similarity
         FROM knowledge_chunks
         WHERE site_id = :site_id
           AND collection IN ({cols_sql})
-          AND 1 - (embedding <=> :embedding::vector) > :min_sim
-        ORDER BY embedding <=> :embedding::vector
+          AND 1 - (embedding <=> CAST(:embedding AS vector)) > :min_sim
+        ORDER BY embedding <=> CAST(:embedding AS vector)
         LIMIT :k
     """)
 

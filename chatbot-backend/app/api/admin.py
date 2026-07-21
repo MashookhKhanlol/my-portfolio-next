@@ -68,7 +68,7 @@ async def ingest_document(
             INSERT INTO knowledge_chunks
                 (site_id, collection, source_url, page_title, chunk_index, chunk_text, embedding)
             VALUES
-                (:site_id, :collection, :source_url, :page_title, :idx, :text, :vec::vector)
+                (:site_id, :collection, :source_url, :page_title, :idx, :text, CAST(:vec AS vector))
         """), {
             "site_id":    SITE_ID,
             "collection": collection,
