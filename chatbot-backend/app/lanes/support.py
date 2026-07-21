@@ -59,7 +59,7 @@ async def log_inquiry(
     await db.execute(
         text("""
             INSERT INTO support_inquiries (session_id, name, email, subject, message)
-            VALUES (:session_id::uuid, :name, :email, :subject, :message)
+            VALUES (CAST(:session_id AS uuid), :name, :email, :subject, :message)
         """),
         {
             "session_id": session_id,

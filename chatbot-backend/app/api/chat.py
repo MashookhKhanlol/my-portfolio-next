@@ -182,13 +182,13 @@ async def _save_message(
 ) -> None:
     # Upsert session
     await db.execute(text("""
-        INSERT INTO chat_sessions (id, site_id) VALUES (:id::uuid, :site_id)
+        INSERT INTO chat_sessions (id, site_id) VALUES (CAST(:id AS uuid), :site_id)
         ON CONFLICT (id) DO UPDATE SET last_active = NOW()
     """), {"id": session_id, "site_id": SITE_ID})
 
     await db.execute(text("""
         INSERT INTO chat_messages (session_id, role, content, intent, sources)
-        VALUES (:session_id::uuid, :role, :content, :intent, :sources::jsonb)
+        VALUES (CAST(:session_id AS uuid), :role, :content, :intent, CAST(:sources AS jsonb))
     """), {
         "session_id": session_id,
         "role":    role,
