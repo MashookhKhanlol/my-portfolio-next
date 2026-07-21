@@ -18,11 +18,11 @@ const STRAPI_URL =
 // ---------------------------------------------------------------------------
 export async function fetchStrapi<T = any>(
   path: string,
-  revalidate = 60
+  revalidate = 0   // 0 = always fresh; set to e.g. 60 for ISR
 ): Promise<T | null> {
   try {
     const res = await fetch(`${STRAPI_URL}/api${path}`, {
-      next: { revalidate },
+      cache: 'no-store',   // Always fetch fresh — no ISR caching
       headers: { 'Content-Type': 'application/json' },
     });
 

@@ -4,6 +4,8 @@ import { FaNodeJs } from "react-icons/fa"
 import HomePage from "./HomePage"
 import { getPortfolioData } from '@/lib/strapi'
 
+// Always render dynamically — Strapi updates must appear immediately
+export const dynamic = 'force-dynamic'
 
 async function getData() {
   // ── Priority 1: Strapi CMS (self-hosted) ─────────────────────────────────
