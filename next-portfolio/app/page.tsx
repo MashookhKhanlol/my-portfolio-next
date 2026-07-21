@@ -9,7 +9,8 @@ export const dynamic = 'force-dynamic'
 
 async function getData() {
   // ── Priority 1: Strapi CMS (self-hosted) ─────────────────────────────────
-  if (process.env.NEXT_PUBLIC_STRAPI_URL) {
+  const strapiUrl = process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL
+  if (strapiUrl) {
     try {
       const strapiData = await getPortfolioData()
       // Guard: if Strapi connected but Global has no content yet, fall back

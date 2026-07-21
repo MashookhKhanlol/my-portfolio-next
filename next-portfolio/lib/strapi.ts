@@ -9,9 +9,13 @@
  * This client handles the v5 flat format.
  */
 
+// STRAPI_URL is a server-side-only env var — no NEXT_PUBLIC_ prefix needed
+// since it's only used in Server Components (never sent to the browser).
+// This means it can be set at RUNTIME in docker-compose, no rebuild required.
 const STRAPI_URL =
-  process.env.NEXT_PUBLIC_STRAPI_URL?.replace(/\/$/, '') ||
-  'http://localhost:1337';
+  (process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337')
+    .trim()
+    .replace(/\/$/, '');
 
 // ---------------------------------------------------------------------------
 // Generic fetcher with ISR revalidation

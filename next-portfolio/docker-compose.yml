@@ -18,6 +18,8 @@ services:
       GMAIL_USER:          ${GMAIL_USER}
       GMAIL_APP_PASSWORD:  ${GMAIL_APP_PASSWORD}
       REVALIDATE_SECRET:   ${REVALIDATE_SECRET}
+      # Strapi CMS URL — runtime var, no rebuild needed when changed
+      STRAPI_URL:          https://strapi.flowcrafted.me
     # Load .env.local automatically for local development convenience
     env_file:
       - .env.local
