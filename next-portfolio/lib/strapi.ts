@@ -46,10 +46,19 @@ export async function fetchStrapi<T = any>(
 // Strapi v5 helpers
 // ---------------------------------------------------------------------------
 
-/** Extracts URL from a v5 media field (single image). */
+/** Extracts URL from a v5 media field (single image).
+ *  - Cloudinary uploads return a full URL: https://res.cloudinary.com/...
+ *  - Local Strapi uploads return a relative path: /uploads/image.png
+ *    In that case, prepend the Strapi base URL.
+ */
 function mediaUrl(field: any): string {
-  // v5: field is { id, url, formats, ... } — flat object
-  return field?.url ?? '';
+  const url: string = field?.url ?? '';
+  if (!url) return '';
+  if (url.startsWith('http')) return url;  // already absolute (Cloudinary etc.)
+  // Relative URL — prepend Strapi base
+  const base = (process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || '')
+    .trim().replace(/\/$/, '');
+  return base ? `${base}${url}` : url;
 }
 
 /** Extracts items from a v5 collection response.
@@ -104,8 +113,8 @@ async function fetchSkills() {
 }
 
 async function fetchProjects() {
-  // No populate needed — imageUrl is a plain text field, not a Strapi media relation
-  return fetchStrapi('/projects?sort=order:asc&pagination[limit]=100');
+  // populate=* includes media relations (image field for Cloudinary/local uploads)
+  return fetchStrapi('/projects?populate=*&sort=order:asc&pagination[limit]=100');
 }
 
 async function fetchEducations() {
