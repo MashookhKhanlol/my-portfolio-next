@@ -7,10 +7,16 @@ A: Mashookh Khan is a Full Stack Developer and DevOps Engineer based in Hyderaba
 A: Mashookh works primarily with Next.js, React.js, TypeScript, Java, Spring Boot, Node.js, FastAPI, Python, PostgreSQL, MongoDB, Docker, GitHub Actions, and AWS. He also has experience with AI/ML technologies including Groq, OpenAI, Gemini AI, and LangChain.
 
 **Q: Is Mashookh available for freelance work?**
-A: Yes, Mashookh is available for freelance projects. You can reach out via the contact form on the portfolio or connect on LinkedIn at https://linkedin.com/in/mashookhkhan.
+A: Yes, Mashookh is available for freelance projects. You can reach out via the contact form on the portfolio or connect on LinkedIn at https://www.linkedin.com/in/mashookh-khan-5a8a1024b.
 
 **Q: How can I contact Mashookh?**
-A: You can contact Mashookh via the Contact section on the portfolio website at https://portfolio.flowcrafted.me/#contact, or on LinkedIn at https://linkedin.com/in/mashookhkhan, or on GitHub at https://github.com/MashookhKhanlol.
+A: You can contact Mashookh via:
+- Contact form on the portfolio: https://portfolio.flowcrafted.me/#contact
+- LinkedIn: https://www.linkedin.com/in/mashookh-khan-5a8a1024b
+- GitHub: https://github.com/MashookhKhanlol
+- Instagram: https://www.instagram.com/mashookh_a_k
+- Twitter / X: https://x.com/mashookh_a_k
+
 
 **Q: What kind of projects does Mashookh build?**
 A: Mashookh builds production-grade full-stack web applications, microservices architectures, DevOps pipelines, and AI-powered tools. His projects range from personal finance trackers and food delivery apps to enterprise microservice systems and automated workflows.

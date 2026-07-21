@@ -8,10 +8,13 @@ I hold a B.Tech CSE degree with AI & ML Specialization from KCC Institute of Tec
 I'm passionate about building scalable systems, automation, DevOps pipelines, and AI-powered engineering solutions.
 I architect production-grade applications combining modern frontends with robust cloud backends — from Next.js and FastAPI to AWS, Docker, and N8N automation workflows.
 
-**Contact:**
+**Contact & Social Links:**
 - Website: https://portfolio.flowcrafted.me
 - GitHub: https://github.com/MashookhKhanlol
-- LinkedIn: https://linkedin.com/in/mashookhkhan
+- LinkedIn: https://www.linkedin.com/in/mashookh-khan-5a8a1024b
+- Instagram: https://www.instagram.com/mashookh_a_k
+- Twitter / X: https://x.com/mashookh_a_k
+- Contact form: https://portfolio.flowcrafted.me/#contact
 
 ---
 
